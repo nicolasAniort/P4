@@ -7,7 +7,7 @@ from controllers.player_controller import PlayerController
 from models.tournament import Tournament
 from models.player import Player
 
-filepath = str("data/players/file.json")
+filepath = str("/data/players/file.json")
 
 def load_tournament(filepath):
     """
@@ -15,6 +15,7 @@ def load_tournament(filepath):
     :param filepath: Chemin vers le fichier JSON à charger
     :return: Un objet Tournament ou None si le fichier est vide ou ne contient pas de données valides
     """
+    print(filepath)
     if not os.path.isfile(filepath):
         open(filepath, 'w').close()
     try:

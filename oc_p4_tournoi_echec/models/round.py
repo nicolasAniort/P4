@@ -1,18 +1,20 @@
 import json
 
 class Round:
-    def __init__(self, name: str, date: str, start_time: str, end_time: str, matches: list):
+    from datetime import datetime
+
+class Tour:
+    def __init__(self, name: str):
         self.name = name
-        self.date = date
-        self.start_time = start_time
-        self.end_time = end_time
-        self.matches = matches
+        self.matches = []
+        self.start_time = None
+        self.end_time = None
 
-    @staticmethod
-    def from_json(json_str: str) -> "Round":
-        data = json.loads(json_str)
-        return Round(**data)
+    def add_match(self, player1: Player, score1: int, player2: Player, score2: int):
+        self.matches.append(([player1, score1], [player2, score2]))
 
-    def to_json(self) -> str:
-        data = self.__dict__.copy()
-        return json.dumps(data)
+    def start(self):
+        self.start_time = datetime.now()
+
+    def end(self):
+        self.end_time = datetime.now()
