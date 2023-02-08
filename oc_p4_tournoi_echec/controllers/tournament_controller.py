@@ -1,35 +1,52 @@
+import json
+import os
 from typing import List
 from models.tournament import Tournament
 from models.player import Player
-from views.tournament_view import TournamentView
 from controllers.player_controller import PlayerController
 from views.player_view import PlayerView
+from views.tournament_view import TournamentView
+
+filepath_tournament = "C:/Users/conta/OneDrive/PROJETS_DEV/1-OC_PYTHON/PROJ4/DEV/PROJ4/oc_p4_tournoi_echec/data/tournaments/files.json"
+
+def load_tournament(filepath_tournament):
+        """
+        Charge un tournoi à partir d'un fichier JSON
+        :param filepath: Chemin vers le fichier JSON à charger
+        :return: Un objet Tournament ou None si le fichier est vide ou ne contient pas de données valides
+        """
+        print(filepath_tournament)
+        if not os.path.isfile(filepath_tournament):
+            open(filepath_tournament, 'w').close()
+        try:
+            with open(filepath_tournament, 'r') as f:
+                #json_data = json.load(f)
+                json_data = f.read()
+            tournament = Tournament.from_json(json_data)
+        except json.decoder.JSONDecodeError:
+            tournament = None
+        return tournament
 
 class TournamentController:
-    def __init__(self, tournaments: List[Tournament], players: List[Player]):
-        self.tournaments = tournaments
-        #self.player = PlayerView()
-        #self.player = PlayerView(players)
+    def __init__(self, players: List[Player]):
+        self.tournaments = load_tournament(filepath_tournament)
+        self.tournament_view = TournamentView(self.tournaments)
         self.player = players
-        self.player_view = PlayerView(self.players)
+        self.player_view = PlayerView(players)
         self.options = {
-            'a': self.add_player(),
-            'p': self.display_players(),
-            'l': self.list_players(),
-            't': self.create_tournament(),
-            'T': self.display_tournaments(),
-            's': self.select_tournament(),
+            '1': self.create_tournament(),
+            '2': self.add_player(),
+            '3': self.create_round(),
+            '4': self.list_players(),
+            'T': self.tournament_view.display_tournaments(),
+            's': self.select_tournament,
             'g': self.generate_pairs(),
             'r': self.display_results()
         }
     def add_player(self):
-        player_controller = PlayerController(self.player.show_create_player())
-        player_controller.add(player_controller.get_input())
+        player_controller = PlayerController(self.player)
+        player_controller.add_player(player_controller.get_input())
         
-    def display_players(self):
-        player_controller = PlayerController(self.tournament.players)
-        player_controller.list()
-
     def list_players(self):
         player_controller = PlayerController(self.tournament.players)
         player_controller.list()
@@ -52,7 +69,25 @@ class TournamentController:
         location = input("Entrez l'emplacement du tournoi: ")
         start_date = input("Entrez la date de début du tournoi (jj/mm/aaaa): ")
         end_date = input("Entrez la date de fin du tournoi (jj/mm/aaaa): ")
-        # On crée un objet Tournament avec les informations saisies
-        self.tournament = Tournament(name, location, start_date, end_date)
         self.players = []
-        self.rounds = []
+        self.nb_rounds = 4
+        self.num_round = Tournament.num_round
+        #self.tournament = Tournament(name, location, start_date, end_date)
+    
+    def load_tournament(filepath_tournament):
+        """
+        Charge un tournoi à partir d'un fichier JSON
+        :param filepath: Chemin vers le fichier JSON à charger
+        :return: Un objet Tournament ou None si le fichier est vide ou ne contient pas de données valides
+        """
+        print(filepath_tournament)
+        if not os.path.isfile(filepath_tournament):
+            open(filepath_tournament, 'w').close()
+        try:
+            with open(filepath_tournament, 'r') as f:
+                #json_data = json.load(f)
+                json_data = f.read()
+            tournament = Tournament.from_json(json_data)
+        except json.decoder.JSONDecodeError:
+            tournament = None
+        return tournament

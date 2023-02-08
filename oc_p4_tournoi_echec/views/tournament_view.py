@@ -15,33 +15,43 @@ class TournamentView:
     """Cette méthode affiche le menu principal de l'application."""
     def display_menu(self):
         print('Menu principal:')
-        print('a: ajouter un joueur')
-        print('t: créer un tournoi')
-        print('p: afficher la liste des joueurs')
-        print('T: afficher la liste des tournois')
-        print('s: sélectionner un tournoi')
-        print("g: générer les paires d'un tour d'un tournoi")
-        print("r: afficher les résultats d'un tour d'un tournoi")
-        print("q: quitter l'application")
+        print('---------------------------------------------------------------------|')
+        print('ACTIONS SUR LE TOURNOI EN COURS                                      |')
+        print('---------------------------------------------------------------------|')
+        print('1: créer un nouveau tournoi                                          |')
+        print('2: ajouter un joueur au tournoi                                      |')
+        print("3: générer le prochain tour et paires                                |")
+        print('4: afficher la liste des joueurs du tournoi par ordre alphabetique   |')
+        print('---------------------------------------------------------------------|')
+        print('RAPPORTS                                                             |')
+        print('---------------------------------------------------------------------|')
+        print('5: afficher la liste des joueurs inscrits                            |')
+        print("6: afficher les résultats par tour du tournoi                        |")
+        print('---------------------------------------------------------------------|')
+        print('RAPPORTS                                                             |')
+        print('---------------------------------------------------------------------|')
+        print("q: quitter l'application                                             |")
+        print('---------------------------------------------------------------------|')
  
-    """Cette méthode affiche le menu principal de l'application."""
+    """Cette méthode permet de selectionner le choix souhaité"""
     
     def get_input(self):
-        print("Entrée utilisateur : ", input)
-        choice = input('choix: ')
-        return choice
+        #print("Entrée utilisateur : ", input)
+        choice = input('Entrez votre choix: ')
+        return choice 
 
     """Cette méthode affiche le message "Choix: " et attend une entrée de l'utilisateur, puis renvoie cette entrée sous forme de chaîne de caractères."""
     
     def display_players(self):
         players = self.tournament.players
+        print("display_players", players)
         for player in players:
             print(player)
 
     """ Cette méthode récupère la liste de joueurs de l'instance de Tournament stockée dans self.tournament, puis affiche chaque joueur de la liste."""
 
     def display_tournaments(self):
-        tournaments = self.tournament.tournaments
+        tournaments = self.tournament
         for tournament in tournaments:
             print(tournament)
 
@@ -59,3 +69,7 @@ class TournamentView:
         results = self.tournament.get_round_results(round_number)
         for result in results:
             print(f'{result[0]} vs {result[1]}: {result[2]} - {result[3]}')
+
+        #print('T: afficher la liste des tournois')
+        #print('s: sélectionner un tournoi')
+        
