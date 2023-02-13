@@ -1,5 +1,6 @@
 from views.player_view import PlayerView
 from views.menuview import Menu
+from views.tournamentview import TournamentView
 
 class MenuController():
 
@@ -33,9 +34,8 @@ class MenuController():
                                               
                     case "12": 
                         new_view_player = PlayerView()
-                        result = new_view_player.update_rank()
-                        print("resultat de la recherche: ", result)
-                        #new_view_player.update_rank()
+                        new_view_player.update_rank()
+                        self.main_menu()
                         
                     case "13": 
                         self.main_menu()
@@ -48,6 +48,9 @@ class MenuController():
                     case "21": 
                         # crééer un tournoi
                         print("retour dans menu controller apres creation du joueur")
+                        new_view_tournement = TournamentView()
+                        new_view_tournement.show_create_tournament()
+                        new_view_tournement.display_tournament_register()
                         self.main_menu()
                                               
                     case "22": 

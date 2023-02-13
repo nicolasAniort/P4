@@ -28,6 +28,26 @@ class PlayerController():
         with open('data/player_data.json', 'w') as file:
             json.dump(players, file)
         
+    def change_rank_player(self):
+        # Charger les données à partir du fichier player_data.json
+        with open("data/player_data.json", "r") as file:
+            player_data = json.load(file)
+
+        # trouver le joueur dont le classement doit être modifié
+        player_name = input("Entrez le nom du joueur: ")
+        player_firstname = input("Entrez le prénom du joueur: ")
+        for player in player_data:
+            if player["nom"] == player_name and player["prenom"] == player_firstname:
+                player["classement"] = int(input("Entrez le nouveau classement: "))
+                break
+
+        # Écrire les données modifiées dans le fichier player_data.json
+        try:
+            with open("data/player_data.json", "w") as file:
+                json.dump(player_data, file, indent=2)
+        except json.JSONDecodeError:
+            print("Le fichier de données des joueurs est corrompu.")
+            return None
     
     def search_player(self, search_criteria):
         players = []
@@ -36,7 +56,7 @@ class PlayerController():
                 players = json.load(file)
         except FileNotFoundError:
             print("Aucun joueur n'a été trouvé.")
-            return Nonepy
+            return None
         except json.JSONDecodeError:
             print("Le fichier de données des joueurs est corrompu.")
             return None

@@ -25,15 +25,18 @@ class PlayerView():
     def update_rank(self):
         
         print("---------------------------------------------------------------------|")
-        print("Mise à jour du classement du joueur")
+        print("-------------Mise à jour du classement du joueur---------------------|")
         print("---------------------------------------------------------------------|")
         print("Entrez les informations de recherche du joueur")
-        last_name = input("Nom de famille: ")
-        first_name = input("Prénom: ") 
-        search_criteria = {'nom':last_name, 'prenom':first_name}
-        file_path_players = "data/player_data.json"
-        new_search = PlayerController.search_player(file_path_players, search_criteria)
-        return new_search
+        new_search_player = PlayerController.change_rank_player(self)
+        print(f"le classement du joueur a été modifié avec succès")
+
+    
+    def display_list_tournament_player():
+        pass
+        
+    def display_list_tournament_player():
+        pass
     
     def display_player_register(self):
         print("Le joueur a bien été créé et ajouté dans la base de données")
@@ -42,5 +45,4 @@ class PlayerView():
         print("Entrer le nouveau classement du joueur, identifiant national N° : " + str(index))
     
     def display_player_score_updated(self, index: str):
-
         print("Le joueur , dont l'identifiant national " + str(index) + "la bien été mis à jour")

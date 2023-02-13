@@ -1,6 +1,3 @@
-import os
-
-
 class Menu():
 
     def choice(self):
