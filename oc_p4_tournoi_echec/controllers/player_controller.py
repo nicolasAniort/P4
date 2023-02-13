@@ -1,45 +1,48 @@
-import datetime
-from typing import List
-from models.player import Player
-from views.player_view import PlayerView
+import json
+class PlayerController():
 
-class PlayerController:
-    """initialisation de la liste de joueur"""
-    def __init__(self, players = []):
-        self.players = players
-     
-    """Ajout d'un joueur à la liste """
-    def add_player(self, player: Player):
-        self.players.append(player)
-    
-    """supprime un joueur de la liste en utilisant une compréhension de liste 
-    pour filtrer les joueurs qui ont un ID différent de celui spécifié."""
-    def remove(self, id: int):
-        self.players = [p for p in self.players if p.id != id]
-    
-    """generation de la liste de joueur"""        
-    def generate_players_list(self):
-        players_list = []
-        for player in self.players:
-            players_list.append(str(player))
-        print("Voici la liste des joueurs", "\n".join(players_list))    
-        return "\n".join(players_list)
-    
-    """Generation de la Liste global des inscrits au club"""
-    def generate_global_players_list_tournaments(self):
+    def __init__(self):
         pass
     
-    """saisie d'un joueur"""
-    def get_input(self) -> Player:
-        last_name = input("Entrez le nom de famille : ")
-        first_name = input("Entrez le prénom : ")
-        birth_date_str = input("Entrez la date de naissance (JJ/MM/AAAA) : ")
-        birth_date = datetime.datetime.strptime(birth_date_str, "%d/%m/%Y").date()
-        national_id = input("Entrez l'identifiant national : ")
-        return Player(last_name, first_name, birth_date, national_id)
-    
-    #def list_player(self) -> str:
-        return self.player_view.list()
+    """ajouter un joueur en ecrivant dans le fichier json ses informations"""
+    def write_player(self):
+        
+        players = []
+        try:
+            with open('data/player_data.json', 'r') as file:
+                players = json.load(file)
+        except FileNotFoundError:
+            pass
+        except json.JSONDecodeError:
+            pass
 
-    #def get(self, id: int) -> str:
-        return self.player_view.get(id)
+        new_player = {
+            "nom": self.last_name,
+            "prenom": self.first_name,
+            "date_de_naissance" : self.birth_date,
+            "identifiant_national": self.national_id,
+            "classement": self.rank
+        }
+        players.append(new_player)
+
+        with open('data/player_data.json', 'w') as file:
+            json.dump(players, file)
+        
+    
+    def search_player(self, search_criteria):
+        players = []
+        try:
+            with open('data/player_data.json', 'r') as file:
+                players = json.load(file)
+        except FileNotFoundError:
+            print("Aucun joueur n'a été trouvé.")
+            return Nonepy
+        except json.JSONDecodeError:
+            print("Le fichier de données des joueurs est corrompu.")
+            return None
+
+        for player in players:
+            if player["nom"] == search_criteria["nom"] and player["prenom"] == search_criteria["prenom"]:
+                return player
+        print("Aucun joueur n'a été trouvé avec les critères de recherche '{}'".format(search_criteria))
+        return None

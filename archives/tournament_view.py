@@ -16,27 +16,58 @@ class TournamentView:
     def display_menu(self):
         print('Menu principal:')
         print('---------------------------------------------------------------------|')
-        print('ACTIONS SUR LE TOURNOI EN COURS                                      |')
+        print('ACTION SUR LES TOURNOIS                                              |')
         print('---------------------------------------------------------------------|')
-        print('1: créer un nouveau tournoi                                          |')
-        print('2: ajouter un joueur au tournoi                                      |')
-        print("3: générer le prochain tour et paires                                |")
-        print('4: afficher la liste des joueurs du tournoi par ordre alphabetique   |')
+        print('1: créer un nouveau tournoi vide                                     |')
+        print('2: peupler un tournoi                                                |')
+        print("3: gérer un tournoi                                                  |")
         print('---------------------------------------------------------------------|')
         print('RAPPORTS                                                             |')
         print('---------------------------------------------------------------------|')
+        print('4: afficher la liste des joueurs par ordre alphabetique              |')
         print('5: afficher la liste des joueurs inscrits                            |')
         print("6: afficher les résultats par tour du tournoi                        |")
+        print('7: afficher la liste de tous les tournois                            |')
         print('---------------------------------------------------------------------|')
         print('RAPPORTS                                                             |')
         print('---------------------------------------------------------------------|')
         print("q: quitter l'application                                             |")
         print('---------------------------------------------------------------------|')
  
-    """Cette méthode permet de selectionner le choix souhaité"""
+    """Cette méthode permet de selectionner le choix souhaité dans le sous menu de peuplement d'un tournoi """
+    def display_submenufilling(self):
+        print('SOUS MENU:')
+        print('---------------------------------------------------------------------|')
+        print('PEUPLER UN TOURNOI                                                   |')
+        print('---------------------------------------------------------------------|')
+        print('1: choisir le tournoi                                                |')
+        print('2: inscrire les joueurs                                              |')
+        print("3: revenir au menu principal                                         |")
+        print('---------------------------------------------------------------------|')
+        print('---------------------------------------------------------------------|')
+        print("q: quitter l'application                                             |")
+        print('---------------------------------------------------------------------|')
+
+        """Cette méthode permet de selectionner le choix souhaité dans le sous menu de peuplement d'un tournoi """
     
+    def display_managedtournament(self):
+        print('SOUS MENU:')
+        print('---------------------------------------------------------------------|')
+        print('GERER UN TOURNOI                                                     |')
+        print('---------------------------------------------------------------------|')
+        print('1: choisir le tournoi                                                |')
+        print('2: afficher les tours et matchs                                      |')
+        print('3: inscrire les scores des matchs                                    |')
+        print('4: voir le classement des joueurs                                    |')
+        print('5: voir la liste des joueurs par ordre alphabetique                  |')
+        print("6: revenir au menu principal                                         |")
+        print('---------------------------------------------------------------------|')
+        print('---------------------------------------------------------------------|')
+        print("q: quitter l'application                                             |")
+        print('---------------------------------------------------------------------|')
+ 
+    """Cette méthode permet de selectionner le choix souhaité"""
     def get_input(self):
-        #print("Entrée utilisateur : ", input)
         choice = input('Entrez votre choix: ')
         return choice 
 
