@@ -6,4 +6,4 @@ class Player():
         self.first_name = first_name
         self.birth_date = birth_date
         self.national_id = national_id
-        self.rank = rank   
+        self.rank = rank
