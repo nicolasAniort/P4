@@ -1,12 +1,15 @@
+import json
 from models.tournament import Tournament
 from controllers.tournament_controller import TournamentController
 from controllers.player_controller import PlayerController
+from models.player import Player
 
 class TournamentView():
 
     """ initialisation du constructeur de la vue tournoi"""
     def __init__(self):
         pass        
+    
     """Affiche le formulaire de création du tournoi et l'enregistre dans la base de données"""
     def show_create_tournament(self):
         
@@ -25,6 +28,22 @@ class TournamentView():
         tournament: Tournament = Tournament(tournament_name,tournament_location,tournament_date_start,tournament_date_end,tournament_number_of_round,tournament_description,tournament_round_number,tournament_round_list,tournament_players_list)
         tournament_creation = TournamentController.write_tournament(tournament)
         return tournament_creation
+    
+    def display_tournament_created(self):
+        print("Le tournoi a bien été créé dans la base de données")
+
+    def display_tournament_start(self):
+        print("Lnacement du nouveau tournoi")
+        
+    def display_enter_tournament(self):
+        print("Entrer le numero du tournoi que l'on souhaite selectionner")
+        
+    def display_tournament_end(self):
+        print("La fin du tournoi est annoncée")
+   
+      
+
+        
     """Affiche la liste des tournois dans la base de données"""
     def list_tournaments_view(self):
         tournament_list = TournamentController.list_registred_tournaments(self)       
@@ -48,6 +67,7 @@ class TournamentView():
 
         print(separator)
         print("")
+    
     """Affiche la liste des choix de tournois """
     def list_tournaments_for_choice_view(self):
         tournament_list = TournamentController.list_tournament_for_choice(self)       
@@ -62,20 +82,40 @@ class TournamentView():
         # Accès au tournoi sélectionné
         selected_tournament = tournament_list[selected_index]
         return selected_tournament
+    
     """Affiche le formulaire d'ajout d'un joueur au tournoi actif"""
     def add_player_to_tournament(self, tournament: Tournament):    
         print("---------------------------------------------------------------------|")
         print("-----------------Ajouter un joueur au tournoi------------------------|")
         print("---------------------------------------------------------------------|")
-        tournament_active: Tournament = tournament
+        #tournament_active: Tournament = tournament
         national_id_new = str(input("Saisir l'identifiant nation du joueur: "))
+        if not national_id_new:
+            return None
+        return national_id_new
         player_new = PlayerController()
-        if player_new.search_player(search_criteria=national_id_new)== True:
+        #si l'identifiant existe déjà dans la basee de données d'inscrits, alors on inscrit automatiquement le joueur
+        if player_new.search_player(search_criteria = national_id_new)!= True:
+            player_for_tournaments: Player = PlayerController.reader_player(national_id = national_id_new)
+            file_path = tournament["liste_des_joueurs"]
+
+            tournament_players = []    
+            new_tournament_players_file = {
+                "identifiant_nationnal": player_for_tournaments.national_id,
+                "nom_du_joueur" : player_for_tournaments.last_name,
+                "prenom": player_for_tournaments.first_name,
+                "classsement" : player_for_tournaments.rank            
+            }
+            print(new_tournament_players_file)
+            tournament_players.append(new_tournament_players_file) 
+            print(tournament_players)
+            with open(file_path, 'a') as file:
+                json.dump(tournament_players, file)
             
-            print("Le joueur existe déjà, donc je vais ecrire juste ID dans la base de données du tournoi")
-        else:
             print("Enregistrement du nouveau joueur , enregistrement de player_data.json , et enregitsreement de son id_national dans tournament_data.json")
-                      
+        else:
+             print("Le joueur existe déjà, donc je vais ecrire juste ID dans la base de données du tournoi")
+                                   
     def create_rounds(self):
         pass
     

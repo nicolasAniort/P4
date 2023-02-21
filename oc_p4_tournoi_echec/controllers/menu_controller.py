@@ -21,7 +21,7 @@ class MenuController():
 
         self.menu.display_main_menu()
         nb_choice = self.menu.choice()
-        print("la valeur saisie est :", nb_choice)     
+           
         match str(nb_choice):
             case "1": 
                 """acces au sous menu joueur"""
@@ -61,7 +61,7 @@ class MenuController():
                         tournament_choice = new_view_tournament_open.list_tournaments_for_choice_view()
                         print("tournament choisi :", tournament_choice)
                         #acces au sous menu tournois 
-                        self.menu.display_tournaments_submenu()                        
+                        self.menu.display_tournaments_submenu(tournament_choice)                        
                         nb_choice = self.menu.choice()        
                         match str(nb_choice):
                             case "221":

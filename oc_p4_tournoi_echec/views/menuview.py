@@ -2,14 +2,12 @@ from models.tournament import Tournament
 class Menu():
 
     def choice(self):
-    #def choice(self, index):
-        #print("Entrez votre choix:")
         while True:
             try:
                 number_choice = int(input("Entrez votre choix: "))
                 break
             except ValueError:
-                print("Veuillez entrer un nombre entier valide.")
+                print("Veuillez entrer un nombre entier valide.")                
         return number_choice
 
     def display_main_menu(self):

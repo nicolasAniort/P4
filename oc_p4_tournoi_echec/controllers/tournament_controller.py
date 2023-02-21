@@ -1,13 +1,12 @@
 import re
 import json
-import datetime
 class TournamentController():
 
     def __init__(self):
         pass
-    """ajouter un nouveau tournoi """
-    def write_tournament(self):
-     
+    
+    def create_tournament(self):
+        """Creer un nouveau tournoi """
         tournaments = []
         try:
             with open('data/tournaments/tournament_data.json', 'r') as file:
@@ -48,9 +47,8 @@ class TournamentController():
         with open(file_path, 'x') as file:
             json.dump(tournament_players, file)     
         
-    """Liste des tournois classés par ordre alphabétique"""
     def list_registred_tournaments(self):
-    
+        """Liste des tournois classés par ordre alphabétique"""
         # Charger les données à partir du fichier tournament_data.json
         tournament_data = []
         with open("data/tournaments/tournament_data.json", "r") as file:

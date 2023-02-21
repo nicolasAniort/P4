@@ -1,4 +1,5 @@
 import json
+from models.player import Player
 class PlayerController():
 
     def __init__(self):
@@ -85,3 +86,27 @@ class PlayerController():
             
         print("Aucun joueur n'a été trouvé avec les critères de recherche '{}'".format(search_criteria))
         return None
+    "lire la fiche d'un joueur dans le fichier json"
+    
+    def reader_player(national_id):
+        national_id_search = national_id
+        # Charger les données à partir du fichier player_data.json
+        with open("data/player/player_data.json", "r") as file:
+            file_contents = file.read()
+            player_data = json.loads(file_contents)
+        # trouver le joueur dont le classement doit être modifié
+        player_for_tournament= Player()
+        for player in player_data:
+               
+            if player["identifiant_national"] == national_id_search:
+                player_for_tournament = player["nom"]
+                player_for_tournament.first_name = player["prenom"]
+                player_for_tournament.birth_date = player["date_de_naissance"]
+                player_for_tournament.national_id = player["identifiant_national"]
+                player_for_tournament.rank = player["classement"]
+                return player_for_tournament
+
+            else:
+                print("Le joueur n'existe pas")
+                return False
+                
