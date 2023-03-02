@@ -11,6 +11,9 @@ class MenuController():
     def __init__(self):
 
         self.menu = Menu()
+        self.playercontroller = PlayerController()
+        self.tournamentcontroller = TournamentController()
+
         
     def confirm_quit(self):
         confirm_choice = Menu.choice_to_quit(self)   
@@ -31,13 +34,11 @@ class MenuController():
                 nb_choice = self.menu.choice()
                 match str(nb_choice):
                     case "11": 
-                        new_controller_player = PlayerController()
-                        new_controller_player.write_player()
+                        self.playercontroller.write_player()
                         self.main_menu()
                                               
                     case "12": 
-                        new_controller_player = PlayerController()
-                        new_controller_player.change_rank_player()
+                        self.playercontroller.change_rank_player()
                         self.main_menu()  
                                              
                     case "13": 
@@ -51,14 +52,15 @@ class MenuController():
                     case "21": 
                         # crééer un tournoi
                         print("retour dans menu controller apres creation du joueur")
-                        new_controller_tournement = TournamentController()
-                        new_controller_tournement.create_tournament()
+                        self.tournamentcontroller.create_tournament()
                         self.main_menu()
                                               
                     case "22": 
                         #Selectionner un tournoi
-                        new_controller_tournament_open = TournamentController()
-                        tournament_choice = new_controller_tournament_open.list_tournament_for_choice()
+                        tournament_choice = self.tournamentcontroller.list_tournament_for_choice()
+                        print("***")
+                        print(tournament_choice)
+                        print("***")
                         print("tournament choisi :", tournament_choice['nom_du_tournoi'])
                         #acces au sous menu tournois 
                         self.menu.display_tournaments_submenu(tournament_choice)                        
@@ -66,7 +68,7 @@ class MenuController():
                         match str(nb_choice):
                             case "221":
                                 #Ajouter un joueur au tournoi
-                                new_controller_tournament_open.add_player_to_tournament(tournament_choice)
+                                self.tournamentcontroller.add_player_to_tournament(tournament_choice)
                                 
                             case "222":
                                 #Générer les tours et les matchs et afficher le tableau 
