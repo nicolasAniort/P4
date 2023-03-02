@@ -1,7 +1,7 @@
 import re
 import json
 from models.player import Player 
-from controllers.player_controller import PlayerController
+#from controllers.player_controller import PlayerController
 from views.menuview import Menu
 
 class PlayerView():
@@ -17,86 +17,51 @@ class PlayerView():
         print("---------------------------------------------------------------------|")
         print("-----------------------Création d'un joueur--------------------------|")
         print("---------------------------------------------------------------------|")
-        while True:
-            try:
-                # Ouvrir le fichier JSON et le lire dans une variable
-                with open('data/player/player_data.json', 'r') as file:
-                    data = json.load(file)
-                national_id = input("Identifiant national: ")
-                if not re.match(r"[A-Za-z]{2}\d{5}", national_id):
-                    raise ValueError("L'identifiant national doit contenir deux lettres et cinq chiffres")
-                # Rechercher l'identifiant national dans les données
-                found = False
-                for player in data:
-                    if player['identifiant_national'] == national_id:
-                        found = True
-                        break
-                # Afficher un message si l'identifiant a été trouvé ou non
-                if found:
-                    print("L'identifiant a été trouvé dans les données.")
-                    menu = Menu()
-                    menu.display_players_menu()
-                else:
-                    break    
-                break
-            except ValueError as e:
-                print(e)
-            try:
-                pass
-            except ValueError as e:
-                print(e)
-        while True:
-            try:
-                last_name = str(input("Nom de famille: "))
-                break
-            except ValueError:
-                print("Veuillez entrer un nom valide")
+              
+    def input_national_id(self):          
+        input_id = input("Identifiant national: ")
+        return input_id
+    def error_national_id(self):
+        print("L'identifiant national doit contenir deux lettres et cinq chiffres")
+    def input_last_name(self):          
+        input_id = input("Nom de famille: ")
+        return input_id
+    def error_last_name(self):
+        print("Veuillez entrer un nom valide")    
+    def input_first_name(self):          
+        input_id = input("Prénom: ")
+        return input_id
+    def error_first_name(self):
+        print("Veuillez entrer un prénom valide")
+    def input_birthday(self):          
+        input_id = input("Date de naissance (jj/mm/aaaa): ")
+        return input_id
+    def error_birthday(self):
+        print("La date de naissance doit être au format jj/mm/aaaa")
+    def change_rank(self):          
+        new_rank = str(int(input("Entrez le nouveau classement: ")))
+        return new_rank
 
-        while True:
-            try:
-                first_name = str(input("Prénom: "))
-                break
-            except ValueError:
-                print("Veuillez entrer un prénom valide")
-            
-        while True:
-            try:
-                birth_date = input("Date de naissance (jj/mm/aaaa): ")
-                if not re.match(r"\d{2}/\d{2}/\d{4}", birth_date):
-                    raise ValueError("La date de naissance doit être au format jj/mm/aaaa")
-                break     
-            except ValueError as e:
-                print(e)
-   
-        while True:
-            try:
-                rank = 0
-                break
-            except ValueError:
-                print("Veuillez entrer un nom valide")
-                
-        player: Player = Player(last_name, first_name, birth_date, national_id, rank)
-        player_creation = PlayerController.write_player(player)
-        return player_creation
+    def show_create_player_ok(self): 
+        print(" La saisie du joueur a été enregistrée dans la base de données")           
         
-    def update_rank(self):
-        
+    def display_change_rank_introduce(self):
         print("---------------------------------------------------------------------|")
         print("-------------Mise à jour du classement du joueur---------------------|")
         print("---------------------------------------------------------------------|")
         print("Entrez les informations de recherche du joueur")
-        new_search_player = PlayerController.change_rank_player(self)
+        
+    def display_change_rank_ok(self):
         print(f"le classement du joueur a été modifié avec succès")
     
-    def list_players_view(self):
+    def list_players_view(self,player_by_alphabetic,longest_name, longest_firstname):
         
-        player_list = PlayerController.list_registred_players(self)       
         #tri par ordre alphabétique
-        player_data_alphabetical = sorted(player_list, key=lambda player: player["nom"])
+        player_data_alphabetical = player_by_alphabetic      
         
-        # trouver le joueur dont le classement doit être modifié
-        longest_name_len = max(len(player["nom"]) for player in player_list)
-        longest_firstname_len = max(len(player["prenom"])for player in player_list)
+        # trouver la taille maximale pour le nom et le prénom
+        longest_name_len = longest_name
+        longest_firstname_len = longest_firstname
         
         # Afficher l'en-tête de la table
         header = "| {:<{}} | {:<{}} | {:<6} | {:<8} | {:<3} |".format("Nom", longest_name_len, "Prénom", longest_firstname_len, "ID national", "date_de_naissance","classement")
@@ -108,13 +73,12 @@ class PlayerView():
 
         # Afficher les données
         for row in player_data_alphabetical:
-            line = "| {:<{}} | {:<{}} | {:<11} | {:<17} | {:<10} |".format(row["nom"], longest_name_len, row["prenom"], longest_firstname_len, row["date_de_naissance"], row["identifiant_national"], row["classement"])
+            line = "| {:<{}} | {:<{}} | {:<11} | {:<17} | {:<10} |".format(row["nom"], longest_name_len, row["prenom"], longest_firstname_len, row["identifiant_national"], row["date_de_naissance"], row["classement"])
             print(line)
 
         print(separator)
         print("")
-    
-          
+              
     def display_list_tournament_player():
         pass
     
@@ -126,3 +90,6 @@ class PlayerView():
     
     def display_player_score_updated(self, index: str):
         print("Le joueur , dont l'identifiant national " + str(index) + "la bien été mis à jour")
+   
+    def display_player_not_exist(self):
+        print("Le joueur recherché n'existe pas.")

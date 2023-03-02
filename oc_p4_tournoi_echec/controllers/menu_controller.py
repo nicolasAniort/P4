@@ -2,6 +2,8 @@ from views.player_view import PlayerView
 from views.menuview import Menu
 from views.tournamentview import TournamentView
 from controllers.player_controller import PlayerController
+from controllers.tournament_controller import TournamentController
+
 
 
 class MenuController():
@@ -11,7 +13,7 @@ class MenuController():
         self.menu = Menu()
         
     def confirm_quit(self):
-        confirm_choice = input("Si vous souhaitez quitter, tapez 0 : ")
+        confirm_choice = Menu.choice_to_quit(self)   
         if confirm_choice == "0":
             exit()
         else:
@@ -29,16 +31,15 @@ class MenuController():
                 nb_choice = self.menu.choice()
                 match str(nb_choice):
                     case "11": 
-                        new_view_player = PlayerView()
-                        new_view_player.show_create_player()
-                        new_view_player.display_player_register()
+                        new_controller_player = PlayerController()
+                        new_controller_player.write_player()
                         self.main_menu()
                                               
                     case "12": 
-                        new_view_player = PlayerView()
-                        new_view_player.update_rank()
-                        self.main_menu()
-                        
+                        new_controller_player = PlayerController()
+                        new_controller_player.change_rank_player()
+                        self.main_menu()  
+                                             
                     case "13": 
                         self.main_menu()
                     
@@ -50,23 +51,22 @@ class MenuController():
                     case "21": 
                         # crééer un tournoi
                         print("retour dans menu controller apres creation du joueur")
-                        new_view_tournement = TournamentView()
-                        new_view_tournement.show_create_tournament()
-                        new_view_tournement.display_tournament_register()
+                        new_controller_tournement = TournamentController()
+                        new_controller_tournement.create_tournament()
                         self.main_menu()
                                               
                     case "22": 
                         #Selectionner un tournoi
-                        new_view_tournament_open = TournamentView()
-                        tournament_choice = new_view_tournament_open.list_tournaments_for_choice_view()
-                        print("tournament choisi :", tournament_choice)
+                        new_controller_tournament_open = TournamentController()
+                        tournament_choice = new_controller_tournament_open.list_tournament_for_choice()
+                        print("tournament choisi :", tournament_choice['nom_du_tournoi'])
                         #acces au sous menu tournois 
                         self.menu.display_tournaments_submenu(tournament_choice)                        
                         nb_choice = self.menu.choice()        
                         match str(nb_choice):
                             case "221":
                                 #Ajouter un joueur au tournoi
-                                new_view_tournament_open.add_player_to_tournament(tournament_choice)
+                                new_controller_tournament_open.add_player_to_tournament(tournament_choice)
                                 
                             case "222":
                                 #Générer les tours et les matchs et afficher le tableau 
@@ -89,20 +89,20 @@ class MenuController():
                 match str(nb_choice):
                     case "31": 
                         # affichage des joueurs par ordre alphabetique
-                        new_report = PlayerView()
-                        new_report.list_players_view() 
+                        new_report = PlayerController()
+                        new_report.list_registred_players()
                         self.main_menu()
                                               
                     case "32": 
                         # affichage des joueurs par score
-                        new_view_player = PlayerView()
-                        new_view_player.update_rank()
-                        print("retour dans menu controller apres modification du classement du joueur")
+                        new_repport_rank_player = PlayerController()
+                        new_repport_rank_player.list_players_by_rank()
+                        self.main_menu()
                         
                     case "33": 
                         # affichage de tous les tournois
-                        new_report_tournament = TournamentView()
-                        new_report_tournament.list_tournaments_view() 
+                        new_report_tournament = TournamentController()
+                        new_report_tournament.list_registred_tournaments() 
                         self.main_menu()
                         
                     case "34": 
