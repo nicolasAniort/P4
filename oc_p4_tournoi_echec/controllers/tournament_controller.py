@@ -78,8 +78,7 @@ class TournamentController():
         tournament_data_alphabetical = sorted(tournament_data, key=lambda tournament: tournament["nom_du_tournoi"])
         #appel de la fonction qui créé la vue des tournois pour choisir
         TournamentView.list_tournaments_for_choice_view(self, tournament_list= tournament_data_alphabetical)
-        selected_index = TournamentView.display_choice_tournament(self)
-        return selected_index
+        
    
     """Liste des tournois classés par date"""
     def list_tournament_for_choice(self):
@@ -94,7 +93,7 @@ class TournamentController():
         #appel de la fonction qui créé la vue des tournois pour choisir
         selected_index = TournamentView.list_tournaments_for_choice_view(self, tournament_list= tournament_data_date)
         # Accès au tournoi sélectionné
-        selected_tournament = TournamentView.display_choice_tournament(self)
+        selected_tournament = tournament_data_date[TournamentView.display_choice_tournament(self)]
         return selected_tournament    
     
     """methode de creation du chemin d'accès au fichier du nouveau tournoi"""
