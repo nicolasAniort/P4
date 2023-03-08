@@ -92,4 +92,4 @@ class PlayerView():
         print("Le joueur , dont l'identifiant national " + str(index) + "la bien été mis à jour")
    
     def display_player_not_exist(self):
-        print("Le joueur recherché n'existe pas.")
+        print("Le joueur n'existe pas.")

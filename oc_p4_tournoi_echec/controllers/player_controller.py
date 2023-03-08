@@ -186,7 +186,7 @@ class PlayerController():
             file_contents = file.read()
             player_data = json.loads(file_contents)
         # trouver le joueur dont le classement doit être modifié
-        player_for_tournament : Player
+        player_for_tournament = Player
         for player in player_data:
                
             if player["identifiant_national"] == national_id_search:
@@ -198,7 +198,7 @@ class PlayerController():
                 return player_for_tournament
 
             else:
-                print("Le joueur n'existe pas")
+                PlayerView.display_player_not_exist(self)
                 return False
         
                     

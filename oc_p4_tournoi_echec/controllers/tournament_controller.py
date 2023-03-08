@@ -78,8 +78,7 @@ class TournamentController():
         tournament_data_alphabetical = sorted(tournament_data, key=lambda tournament: tournament["nom_du_tournoi"])
         #appel de la fonction qui créé la vue des tournois pour choisir
         TournamentView.list_tournaments_for_choice_view(self, tournament_list= tournament_data_alphabetical)
-        
-   
+           
     """Liste des tournois classés par date"""
     def list_tournament_for_choice(self):
         # Charger les données à partir du fichier tournament_data.json
@@ -116,12 +115,13 @@ class TournamentController():
             return None
         #return national_id_new
         player_new = PlayerController.search_player(self, search_criteria = national_id_new)
-        
+        print(f'player_new : {player_new}')
         #si l'identifiant existe déjà dans la basee de données d'inscrits, alors on inscrit automatiquement le joueur
-        if player_new == None:
+        if player_new != None:
             player_for_tournament = PlayerController.reader_player(self, national_id = national_id_new)
+            print(f'impression player existant deja : {player_for_tournament}')
             file_path = tournament["liste_des_joueurs"]
-
+            print(f'{file_path}')
             tournament_players = []    
             new_tournament_players_file = {
                 "identifiant_nationnal": player_for_tournament.national_id,
