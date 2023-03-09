@@ -18,9 +18,12 @@ class PlayerController():
             with open('data/player/player_data.json', 'r') as file:
                 players = json.load(file)
         except FileNotFoundError:
-            pass
+            # Créer un nouveau fichier JSON avec une liste vide
+            with open('data/player/player_data.json', 'w') as file:
+                json.dump([], file)
+                players = []
         except json.JSONDecodeError:
-            pass
+            players = []
         while True:
             try:
                 # Ouvrir le fichier JSON et le lire dans une variable
@@ -72,7 +75,7 @@ class PlayerController():
    
         while True:
             try:
-                rank = int("0")
+                rank = "0"
                 break
             except ValueError:
                 print("Veuillez entrer un nom valide")
@@ -87,11 +90,7 @@ class PlayerController():
             "classement": player.rank
         }
         players.append(new_player)
-
-        with open('data/player/player_data.json', 'w') as file:
-            json.dump(players, file)
-    
-        PlayerView.show_create_player_ok(self)
+        return players
                 
     def list_registred_players(self):
         """liste des joueurs enregistrés dans le fichier json"""
@@ -122,8 +121,7 @@ class PlayerController():
         longest_firstname_len = max(len(player["prenom"])for player in player_data)
         PlayerView.list_players_view(self, player_data_rank, longest_name_len, longest_firstname_len)
         #return player_data_by_rank    
-        
-        
+                
     """Changer le classement d'un joueur dans le fichier json player_data.json"""    
     def change_rank_player(self):
         PlayerView.display_change_rank_introduce(self)
@@ -201,4 +199,8 @@ class PlayerController():
                 PlayerView.display_player_not_exist(self)
                 return False
         
-                    
+    def update_file_players(self, players,file_path):    
+        
+        with open(file_path, 'w') as file:
+            json.dump(players, file, indent=2)            
+        PlayerView.show_create_player_ok(self)

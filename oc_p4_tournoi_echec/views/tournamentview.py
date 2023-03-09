@@ -21,7 +21,6 @@ class TournamentView():
         list_input_players[3] = input("Date de fin: ")
         list_input_players[4] = input("Remarque générales du directeur du tournoi: ")
         return list_input_players
-
         
     def display_tournament_created(self):
         print("Le tournoi a bien été créé dans la base de données")
@@ -35,9 +34,7 @@ class TournamentView():
     def display_tournament_end(self):
         print("La fin du tournoi est annoncée")
    
-      
-
-        
+          
     """Affiche la liste des tournois dans la base de données"""
     def list_tournaments_view(self):
         tournament_list = TournamentController.list_registred_tournaments(self)       

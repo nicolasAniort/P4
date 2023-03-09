@@ -3,6 +3,7 @@ from views.menuview import Menu
 from views.tournamentview import TournamentView
 from controllers.player_controller import PlayerController
 from controllers.tournament_controller import TournamentController
+from controllers.round_controller import RoundController
 
 
 
@@ -13,6 +14,7 @@ class MenuController():
         self.menu = Menu()
         self.playercontroller = PlayerController()
         self.tournamentcontroller = TournamentController()
+        self.roundcontroller = RoundController()
 
         
     def confirm_quit(self):
@@ -37,7 +39,9 @@ class MenuController():
                         nb_choice = self.menu.choice()
                         match str(nb_choice):
                             case "11": 
-                                self.playercontroller.write_player()
+                                new_user = self.playercontroller.write_player()
+                                path ='data/player/player_data.json'
+                                self.playercontroller.update_file_players(players = new_user,file_path = path)
                                 y = 0
                                 #self.main_menu()
                                                     
@@ -49,7 +53,7 @@ class MenuController():
                                                     
                             case "13": 
                                 #self.main_menu()
-                                y = 2
+                                y = 1
                 case "2":
                     """acces au sous menu tournois"""
                     z = 0
@@ -66,27 +70,27 @@ class MenuController():
                             case "22": 
                                 #Selectionner un tournoi
                                 tournament_choice = self.tournamentcontroller.list_tournament_for_choice()
-                                print("***")
-                                print(tournament_choice)
-                                print("***")
                                 print("tournament choisi :", tournament_choice['nom_du_tournoi'])
+                                sub = 0
+                                while sub < 1:
                                 #acces au sous menu tournois 
-                                self.menu.display_tournaments_submenu(tournament_choice)                        
-                                nb_choice = self.menu.choice()        
-                                match str(nb_choice):
-                                    case "221":
-                                        #Ajouter un joueur au tournoi
-                                        self.tournamentcontroller.add_player_to_tournament(tournament_choice)
-                                        
-                                    case "222":
-                                        #Générer les tours et les matchs et afficher le tableau 
-                                        pass                            
-                                    case "223":
-                                        #Saisie des scores
-                                        pass
-                                    case "224":
-                                        #retour au menu supérieur
-                                        pass
+                                    self.menu.display_tournaments_submenu(tournament_choice)                        
+                                    nb_choice = self.menu.choice()        
+                                    match str(nb_choice):
+                                        case "221":
+                                            #Ajouter un joueur au tournoi
+                                            self.tournamentcontroller.add_player_to_tournament(tournament_choice)
+                                            sub = 0             
+                                        case "222":
+                                            #Générer les tours et les matchs et afficher le tableau
+                                            self.roundcontroller.create_round(tournament_choice)     
+                                            sub = 0                         
+                                        case "223":
+                                            #Saisie des scores
+                                            sub = 0
+                                        case "224":
+                                            #retour au menu supérieur
+                                            sub = 1
                                 z = 0
                                 #print("retour dans menu controller apres modification du classement du joueur")
                                 
@@ -120,10 +124,10 @@ class MenuController():
                                 
                             case "34": 
                                 # affichage des joueurs par ordre alphabetique et par tours
-                                pass
+                                w = 0
                             case "35": 
                                 # affichage des joueurs par score et par tours
-                                pass
+                                w = 0
                             case "36": 
                                 w = 1
 

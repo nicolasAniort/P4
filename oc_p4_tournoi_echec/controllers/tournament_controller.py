@@ -13,7 +13,7 @@ class TournamentController():
     def create_tournament(self):
         """recuperation de la saisie"""
         input_result :List = TournamentView.show_create_tournament(self)
-        
+        tournament_id = 'TR'+ str(re.sub("/", "", input_result[2]))
         tournament_name = str(input_result[0])
         tournament_location = str(input_result[1])
         tournament_date_start = input_result[2]
@@ -23,7 +23,7 @@ class TournamentController():
         tournament_round_number = 1
         tournament_round_list = []
         tournament_players_list: str = ""
-        tournament = Tournament(tournament_name,tournament_location,tournament_date_start,tournament_date_end,tournament_number_of_round,tournament_description,tournament_round_number,tournament_round_list,tournament_players_list)
+        tournament = Tournament(tournament_id,tournament_name,tournament_location,tournament_date_start,tournament_date_end,tournament_number_of_round,tournament_description,tournament_round_number,tournament_round_list,tournament_players_list)
         
         """Creer un nouveau tournoi """
         tournaments = []
@@ -37,7 +37,7 @@ class TournamentController():
         new_tournament_name = tournament.tournament_name
         new_tournament_date_start = tournament.tournament_date_start
         new_tournament = {
-            
+        "id du tournoi" : tournament.tournament_id,    
         "nom_du_tournoi":tournament.tournament_name,
         "lieu":tournament.tournament_location,
         "date_de_debut":tournament.tournament_date_start,
@@ -46,12 +46,12 @@ class TournamentController():
         "description_tournoi":tournament.tournament_description,
         "numero_round_actif":tournament.tournament_round_number,
         "liste_des_rounds":tournament.tournament_round_list,
-        "liste_des_joueurs":TournamentController.create_file_player_path(tournament_name = new_tournament_name,tournament_date_start = new_tournament_date_start)      
+        "liste_des_joueurs":TournamentController.create_file_player_path(tournament_id)      
         }
         tournaments.append(new_tournament)
 
         with open('data/tournaments/tournament_data.json', 'w') as file:
-            json.dump(tournaments, file)
+            json.dump(tournaments, file,indent=2)
         
         tournament_players = []    
         new_tournament_players_file = {
@@ -64,7 +64,7 @@ class TournamentController():
         file_path = TournamentController.create_file_player_path(new_tournament_name,new_tournament_date_start)
 
         with open(file_path, 'x') as file:
-            json.dump(tournament_players, file)     
+            json.dump(tournament_players, file, indent=2)     
         TournamentView.display_tournament_created(self)
     """Liste des tournois enregistrés"""           
     def list_registred_tournaments(self):
@@ -109,8 +109,7 @@ class TournamentController():
     def add_player_to_tournament(self,tournament: Tournament):
         
         national_id_new =TournamentView.display_add_player_to_tournament(self)
-        
-        tournament_active: Tournament = tournament
+        #tournament_active: Tournament = tournament
         if not national_id_new:
             return None
         #return national_id_new
@@ -133,8 +132,12 @@ class TournamentController():
             tournament_players.append(new_tournament_players_file) 
             print(tournament_players,file_path)
             with open(file_path, 'a') as file:
-                json.dump(tournament_players, file)
+                json.dump(tournament_players, file, indent=2)
             
             print("Enregistrement du nouveau joueur , enregistrement de player_data.json , et enregistrement de son id_national dans tournament_data.json")
         else:
-            print("Le joueur existe déjà, donc je vais ecrire juste ID dans la base de données du tournoi")   
+            new_user = PlayerController.write_player(self)
+            #print(f'{new_user}')
+            print(f'{tournament["liste_des_joueurs"]}')
+            PlayerController.update_file_players(self,players = new_user,file_path = tournament["liste_des_joueurs"])
+            #print("Le joueur existe déjà, donc je vais ecrire juste ID dans la base de données du tournoi")   
