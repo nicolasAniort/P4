@@ -9,17 +9,17 @@ class PlayerController():
     def __init__(self):
         pass
     
-    def write_player(self):        
+    def write_player(self, path):        
         """ajouter un joueur en ecrivant dans le fichier json ses informations"""
         players = []
         PlayerView.show_create_player(self)
         """ouvrir le fichier json"""
         try:
-            with open('data/player/player_data.json', 'r') as file:
+            with open(path, 'r') as file:
                 players = json.load(file)
         except FileNotFoundError:
             # Créer un nouveau fichier JSON avec une liste vide
-            with open('data/player/player_data.json', 'w') as file:
+            with open(path, 'w') as file:
                 json.dump([], file)
                 players = []
         except json.JSONDecodeError:
@@ -27,7 +27,7 @@ class PlayerController():
         while True:
             try:
                 # Ouvrir le fichier JSON et le lire dans une variable
-                with open('data/player/player_data.json', 'r') as file:
+                with open(path, 'r') as file:
                     data = json.load(file)
                 national_id = PlayerView.input_national_id(self)                
                 if not re.match(r"[A-Za-z]{2}\d{5}", national_id):
@@ -72,7 +72,6 @@ class PlayerController():
                 break     
             except ValueError as e:
                 print(e)
-   
         while True:
             try:
                 rank = "0"

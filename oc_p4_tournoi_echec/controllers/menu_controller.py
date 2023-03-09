@@ -39,9 +39,9 @@ class MenuController():
                         nb_choice = self.menu.choice()
                         match str(nb_choice):
                             case "11": 
-                                new_user = self.playercontroller.write_player()
-                                path ='data/player/player_data.json'
-                                self.playercontroller.update_file_players(players = new_user,file_path = path)
+                                fpath ='data/player/player_data.json'
+                                new_user = self.playercontroller.write_player(path =fpath)
+                                self.playercontroller.update_file_players(players = new_user,file_path = fpath)
                                 y = 0
                                 #self.main_menu()
                                                     
@@ -63,8 +63,7 @@ class MenuController():
                         match str(nb_choice):
                             case "21": 
                                 # crééer un tournoi
-                                print("retour dans menu controller apres creation du joueur")
-                                #self.tournamentcontroller.create_tournament()
+                                self.tournamentcontroller.create_tournament()
                                 z = 0
                                                     
                             case "22": 

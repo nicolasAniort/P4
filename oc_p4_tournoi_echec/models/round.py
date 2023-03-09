@@ -5,8 +5,4 @@ class Round:
         self.end_time = end_time
         self.matches = []
 
-    def add_match(self, match):
-        self.matches.append(match)
-
-    def __repr__(self):
-        return f"<Round {self.name} ({len(self.matches)} matches)>"
+    

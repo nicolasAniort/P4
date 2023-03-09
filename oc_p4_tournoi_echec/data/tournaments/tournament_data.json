@@ -1,0 +1,26 @@
+[
+  {
+    "id du tournoi": "TR10101968",
+    "nom_du_tournoi": "Tournoi des champions",
+    "lieu": "Albi",
+    "date_de_debut": "10/10/1968",
+    "date_de_fin": "12/02/1968",
+    "nombre_de_round": 4,
+    "description_tournoi": "pas de remarques g\u00e9n\u00e9rales",
+    "numero_round_actif": 1,
+    "liste_des_rounds": [],
+    "liste_des_joueurs": "data/tournaments/TR10101968_players.json"
+  },
+  {
+    "id du tournoi": "TR10102023",
+    "nom_du_tournoi": "Tournoi dess champions",
+    "lieu": "albi",
+    "date_de_debut": "10/10/2023",
+    "date_de_fin": "10/11/2023",
+    "nombre_de_round": 4,
+    "description_tournoi": "pas de remarques g\u00e9n\u00e9rales",
+    "numero_round_actif": 1,
+    "liste_des_rounds": [],
+    "liste_des_joueurs": "data/tournaments/TR10102023_players.json"
+  }
+]

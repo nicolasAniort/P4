@@ -3,5 +3,4 @@ class Match:
         self.players = [player1, player2]
         self.scores = [score1, score2]
 
-    def __repr__(self):
-        return f"<Match: {self.players[0]} contre {self.players[1]}>"
+    

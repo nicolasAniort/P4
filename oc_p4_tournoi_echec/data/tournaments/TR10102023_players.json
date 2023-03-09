@@ -1,0 +1,23 @@
+[
+  {
+    "nom": "durand",
+    "prenom": "jean",
+    "date_de_naissance": "10/10/1977",
+    "identifiant_national": "se12345",
+    "classement": "0"
+  },
+  {
+    "nom": "zeus",
+    "prenom": "phirmin",
+    "date_de_naissance": "01/01/1929",
+    "identifiant_national": "hu15926",
+    "classement": "0"
+  },
+  {
+    "nom": "duor",
+    "prenom": "sour",
+    "date_de_naissance": "01/01/1945",
+    "identifiant_national": "as15926",
+    "classement": "0"
+  }
+]

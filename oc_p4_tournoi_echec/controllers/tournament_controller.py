@@ -61,7 +61,7 @@ class TournamentController():
             "classsement" : ''            
         }
         tournament_players.append(new_tournament_players_file)
-        file_path = TournamentController.create_file_player_path(new_tournament_name,new_tournament_date_start)
+        file_path = TournamentController.create_file_player_path(tournament.tournament_id)
 
         with open(file_path, 'x') as file:
             json.dump(tournament_players, file, indent=2)     
@@ -96,48 +96,38 @@ class TournamentController():
         return selected_tournament    
     
     """methode de creation du chemin d'accès au fichier du nouveau tournoi"""
-    def create_file_player_path(tournament_name,tournament_date_start):    
+    def create_file_player_path(tournament_id):    
         
-        date_string = tournament_date_start
-        date_string = re.sub("\/","",date_string)
-        name_string = tournament_name
-        name_string = re.sub("\ ", "_", name_string)
-        file_name = str( name_string + date_string + ".json")
+        id_string = tournament_id
+        file_name = id_string +"_players" + ".json"
         file_path = 'data/tournaments/' + file_name
         return file_path
     """Ajouter un joueur au tournoi choisi"""
     def add_player_to_tournament(self,tournament: Tournament):
         
         national_id_new =TournamentView.display_add_player_to_tournament(self)
-        #tournament_active: Tournament = tournament
         if not national_id_new:
             return None
-        #return national_id_new
         player_new = PlayerController.search_player(self, search_criteria = national_id_new)
-        print(f'player_new : {player_new}')
+        fpath = tournament["liste_des_joueurs"]
+        tournament_players = []    
+        with open(fpath, 'r') as file:
+            tournament_players = json.load(file)
+            
         #si l'identifiant existe déjà dans la basee de données d'inscrits, alors on inscrit automatiquement le joueur
         if player_new != None:
             player_for_tournament = PlayerController.reader_player(self, national_id = national_id_new)
-            print(f'impression player existant deja : {player_for_tournament}')
-            file_path = tournament["liste_des_joueurs"]
-            print(f'{file_path}')
-            tournament_players = []    
             new_tournament_players_file = {
                 "identifiant_nationnal": player_for_tournament.national_id,
                 "nom_du_joueur" : player_for_tournament.last_name,
                 "prenom": player_for_tournament.first_name,
+                "date_de_naissance": player_for_tournament.birth_date,
                 "classsement" : player_for_tournament.rank            
             }
-            print(new_tournament_players_file, "voici de qui va etre inscrit dans le json de joueur du tournoi")
-            tournament_players.append(new_tournament_players_file) 
-            print(tournament_players,file_path)
-            with open(file_path, 'a') as file:
-                json.dump(tournament_players, file, indent=2)
+            tournament_players.append(new_tournament_players_file)
+            PlayerController.update_file_players(self,players = tournament_players,file_path = fpath)
             
-            print("Enregistrement du nouveau joueur , enregistrement de player_data.json , et enregistrement de son id_national dans tournament_data.json")
         else:
-            new_user = PlayerController.write_player(self)
-            #print(f'{new_user}')
-            print(f'{tournament["liste_des_joueurs"]}')
-            PlayerController.update_file_players(self,players = new_user,file_path = tournament["liste_des_joueurs"])
-            #print("Le joueur existe déjà, donc je vais ecrire juste ID dans la base de données du tournoi")   
+            new_user = PlayerController.write_player(self, path =fpath)
+            PlayerController.update_file_players(self,players = new_user,file_path = fpath)
+        
