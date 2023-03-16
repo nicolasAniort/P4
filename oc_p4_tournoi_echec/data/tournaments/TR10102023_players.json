@@ -19,5 +19,12 @@
     "date_de_naissance": "01/01/1945",
     "identifiant_national": "as15926",
     "classement": "0"
+  },
+  {
+    "identifiant_nationnal": "qz15926",
+    "nom_du_joueur": "ingberg",
+    "prenom": "thor",
+    "date_de_naissance": "10/01/1985",
+    "classsement": "0"
   }
 ]

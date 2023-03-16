@@ -194,10 +194,6 @@ class PlayerController():
                 player_for_tournament.rank = player["classement"]
                 return player_for_tournament
 
-            else:
-                PlayerView.display_player_not_exist(self)
-                return False
-        
     def update_file_players(self, players,file_path):    
         
         with open(file_path, 'w') as file:
