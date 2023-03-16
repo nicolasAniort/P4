@@ -86,6 +86,7 @@ class MenuController():
                                             sub = 0                         
                                         case "223":
                                             #Saisie des scores
+                                            self.roundcontroller.update_round(tournament_choice)
                                             sub = 0
                                         case "224":
                                             #retour au menu supérieur

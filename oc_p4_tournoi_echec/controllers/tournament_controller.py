@@ -56,7 +56,7 @@ class TournamentController():
         tournament_players = []    
         new_tournament_players_file = {
             "identifiant_nationnal": '',
-            "nom_du_joueur" : '',
+            "nom" : '',
             "prenom": '',
             "classsement" : ''            
         }
@@ -119,7 +119,7 @@ class TournamentController():
             player_for_tournament = PlayerController.reader_player(self, national_id = national_id_new)
             new_tournament_players_file = {
                 "identifiant_nationnal": player_for_tournament.national_id,
-                "nom_du_joueur" : player_for_tournament.last_name,
+                "nom" : player_for_tournament.last_name,
                 "prenom": player_for_tournament.first_name,
                 "date_de_naissance": player_for_tournament.birth_date,
                 "classsement" : player_for_tournament.rank            

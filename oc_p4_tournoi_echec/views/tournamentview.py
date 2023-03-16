@@ -66,10 +66,10 @@ class TournamentView():
         for index, tournament in enumerate(tournament_list):
             print(f"{index}: {tournament['nom_du_tournoi']},{tournament['date_de_debut']}")
         print("")
+    
     def display_choice_tournament(self):
         index_selected = int(input("Sélectionnez un tournoi en entrant son numéro: "))
         return index_selected
-        
         
     """Affiche le formulaire d'ajout d'un joueur au tournoi actif"""
     def display_add_player_to_tournament(self):    
