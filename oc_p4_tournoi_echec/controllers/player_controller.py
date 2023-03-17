@@ -82,10 +82,10 @@ class PlayerController():
         player: Player = Player(last_name, first_name, birth_date, national_id, rank)
             
         new_player = {
+            "identifiant_national": player.national_id,
             "nom": player.last_name,
             "prenom": player.first_name,
-            "date_de_naissance" : player.birth_date,
-            "identifiant_national": player.national_id,
+            "date_de_naissance" : player.birth_date,            
             "classement": player.rank
         }
         players.append(new_player)

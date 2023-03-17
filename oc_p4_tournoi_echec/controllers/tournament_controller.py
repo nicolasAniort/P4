@@ -58,7 +58,7 @@ class TournamentController():
             "identifiant_nationnal": '',
             "nom" : '',
             "prenom": '',
-            "classsement" : ''            
+            "classsement" : ''          
         }
         tournament_players.append(new_tournament_players_file)
         file_path = TournamentController.create_file_player_path(tournament.tournament_id)
@@ -113,7 +113,7 @@ class TournamentController():
         tournament_players = []    
         with open(fpath, 'r') as file:
             tournament_players = json.load(file)
-            
+                
         #si l'identifiant existe déjà dans la basee de données d'inscrits, alors on inscrit automatiquement le joueur
         if player_new != None:
             player_for_tournament = PlayerController.reader_player(self, national_id = national_id_new)

@@ -8,8 +8,7 @@ class RoundView():
         
     def display_file_exist(self, tournament):
         print("Le fichier existe déjà, le tournoi peut débuter!")    
-        
-    
+            
     def display_active_round(self, name, path, data):
         # afficher le round et la liste de match
         print(f"Mise à jour du {name} ")
@@ -26,12 +25,13 @@ class RoundView():
     def update_score_player1(self):
         # Demander à l'utilisateur les scores pour le joueur1
                 score1 = input("Entrez le score pour le joueur 1 : ")
+                return score1
     def update_score_player2(self):
         # Demander à l'utilisateur les scores pour le joueur2
-                score2 = input("Entrez le score pour le joueur 2 : ")       
+                score2 = input("Entrez le score pour le joueur 2 : ")
+                return score2       
     def display_score_update_ok(self):
         print("Le score du match a été mis à jour avec succès.")
         
     
-    # choisir le match à metter à jour via son index
-    #RoundView.select_match_update(self, tournament)    
+      
