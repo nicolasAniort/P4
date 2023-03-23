@@ -3,64 +3,10 @@
     "id_round": "1",
     "match": {
       "player1": {
-        "nom": "ingberg",
-        "prenom": "thor",
-        "date_de_naissance": "10/01/1985",
-        "identifiant_national": "qz15926",
-        "classement": "0",
-        "adversaire": [
-          "jn12345"
-        ]
-      },
-      "player2": {
-        "identifiant_national": "jn12345",
-        "nom": "bru",
-        "prenom": "alix",
-        "date_de_naissance": "15/06/1975",
-        "classement": "1",
-        "adversaire": [
-          "qz15926"
-        ]
-      },
-      "score1": "0",
-      "score2": "1"
-    }
-  },
-  {
-    "id_round": "2",
-    "match": {
-      "player1": {
-        "nom": "durand",
-        "prenom": "michel",
-        "date_de_naissance": "10/10/1967",
-        "identifiant_national": "se14345",
-        "classement": "0",
-        "adversaire": [
-          "hu98865"
-        ]
-      },
-      "player2": {
         "nom": "dumur",
         "prenom": "jean",
         "date_de_naissance": "01/01/1956",
         "identifiant_national": "hu98865",
-        "classement": "1",
-        "adversaire": [
-          "se14345"
-        ]
-      },
-      "score1": "0",
-      "score2": "1"
-    }
-  },
-  {
-    "id_round": "3",
-    "match": {
-      "player1": {
-        "identifiant_national": "bh12345",
-        "nom": "bord",
-        "prenom": "ruth",
-        "date_de_naissance": "02/10/1985",
         "classement": "1",
         "adversaire": [
           "se12345"
@@ -73,7 +19,7 @@
         "identifiant_national": "se12345",
         "classement": "0",
         "adversaire": [
-          "bh12345"
+          "hu98865"
         ]
       },
       "score1": "1",
@@ -81,30 +27,84 @@
     }
   },
   {
-    "id_round": "4",
+    "id_round": "2",
+    "match": {
+      "player1": {
+        "nom": "ingberg",
+        "prenom": "thor",
+        "date_de_naissance": "10/01/1985",
+        "identifiant_national": "qz15926",
+        "classement": "1",
+        "adversaire": [
+          "se14345"
+        ]
+      },
+      "player2": {
+        "nom": "durand",
+        "prenom": "michel",
+        "date_de_naissance": "10/10/1967",
+        "identifiant_national": "se14345",
+        "classement": "0",
+        "adversaire": [
+          "qz15926"
+        ]
+      },
+      "score1": "1",
+      "score2": "0"
+    }
+  },
+  {
+    "id_round": "3",
     "match": {
       "player1": {
         "nom": "dumur",
         "prenom": "leon",
         "date_de_naissance": "01/01/1956",
         "identifiant_national": "hu98765",
-        "classement": "1",
+        "classement": "0",
         "adversaire": [
-          "ft15231"
+          "bh12345"
         ]
       },
       "player2": {
+        "identifiant_national": "bh12345",
+        "nom": "bord",
+        "prenom": "ruth",
+        "date_de_naissance": "02/10/1985",
+        "classement": "1",
+        "adversaire": [
+          "hu98765"
+        ]
+      },
+      "score1": "0",
+      "score2": "1"
+    }
+  },
+  {
+    "id_round": "4",
+    "match": {
+      "player1": {
         "identifiant_national": "ft15231",
         "nom": "orniere",
         "prenom": "paul",
         "date_de_naissance": "15/06/1962",
         "classement": "0",
         "adversaire": [
-          "hu98765"
+          "jn12345"
         ]
       },
-      "score1": "1",
-      "score2": "0"
+      "player2": {
+        "identifiant_national": "jn12345",
+        "nom": "bru",
+        "prenom": "alix",
+        "date_de_naissance": "15/06/1975",
+        "classement": "1",
+        "adversaire": [
+          "ft15231"
+        ]
+      },
+      "score1": "0",
+      "score2": "1"
     }
   }
 ]

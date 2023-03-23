@@ -19,7 +19,7 @@
     "date_de_fin": "10/11/2023",
     "nombre_de_round": 4,
     "description_tournoi": "pas de remarques g\u00e9n\u00e9rales",
-    "numero_round_actif": 3,
+    "numero_round_actif": 2,
     "liste_des_rounds": [],
     "liste_des_joueurs": "data/tournaments/TR10102023_players.json"
   }
