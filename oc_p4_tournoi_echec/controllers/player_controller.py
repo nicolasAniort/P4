@@ -10,7 +10,7 @@ class PlayerController:
         pass
 
     def write_player(self, path):
-        """ajouter un joueur en ecrivant dans le fichier json ses informations"""
+        """ajouter un joueur dans le fichier json"""
         players = []
         PlayerView.show_create_player(self)
         """ouvrir le fichier json"""
@@ -158,8 +158,7 @@ class PlayerController:
                         # break
                     except ValueError:
                         print(
-                            "Erreur de frappe, Veuillez renouveller votre frappe au format numérique: "
-                        )
+                            "Erreur, Veuillez renouveller votre frappe au format numérique: ")
 
         # Écrire les données modifiées dans le fichier player_data.json
         try:
@@ -170,7 +169,8 @@ class PlayerController:
             print("Le fichier de données des joueurs est corrompu.")
             return None
 
-    """Chercher un joueur dans le fichier json à partir de son identifiant nationnal ses informations"""
+    """Chercher un joueur dans le fichier json à partir de 
+    son identifiant nationnal ses informations"""
 
     def search_player(self, search_criteria):
         players = []
