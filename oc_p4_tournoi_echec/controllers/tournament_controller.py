@@ -58,7 +58,7 @@ class TournamentController():
             "identifiant_nationnal": '',
             "nom" : '',
             "prenom": '',
-            "classsement" : ''          
+            "classement" : ''          
         }
         tournament_players.append(new_tournament_players_file)
         file_path = TournamentController.create_file_player_path(tournament.tournament_id)
@@ -122,7 +122,8 @@ class TournamentController():
                 "nom" : player_for_tournament.last_name,
                 "prenom": player_for_tournament.first_name,
                 "date_de_naissance": player_for_tournament.birth_date,
-                "classsement" : player_for_tournament.rank            
+                "classement" : player_for_tournament.rank,
+                "adversaire" : player_for_tournament.adversary           
             }
             tournament_players.append(new_tournament_players_file)
             PlayerController.update_file_players(self,players = tournament_players,file_path = fpath)
@@ -130,4 +131,37 @@ class TournamentController():
         else:
             new_user = PlayerController.write_player(self, path =fpath)
             PlayerController.update_file_players(self,players = new_user,file_path = fpath)
+            PlayerController.update_file_players(self,players = new_user, file_path = "data/player/player_data.json")
         
+    def tournament_rank_players_update(self,tournament, match_end):
+        
+        prefixed_tournament = tournament.get ("id du tournoi")
+        filepath = 'data/tournaments/' + prefixed_tournament + "_players.json"
+        tournament_players = []    
+        #ouverture du fichier listant les joueurs du tournoi
+        with open(filepath, 'r') as file:
+            tournament_players = json.load(file)
+        
+        player1 = match_end['match']["player1"]
+        player2 = match_end['match']["player2"]
+        
+        for number,player in enumerate(tournament_players):
+            
+            if player['identifiant_national'] == player1['identifiant_national']:
+                # additionner le score au score existant 
+                player["classement"] = str(int(player["classement"]) + int(match_end['match']['score1']))
+                # Mettre à jour les scores correspondants dans le dictionnaire du tournoi
+                
+                
+            elif player['identifiant_national'] == player2['identifiant_national']:
+                # additionner le score au score existant 
+                player["classement"] = str(int(player["classement"]) + int(match_end['match']['score2']))
+                # Mettre à jour les scores correspondants dans le dictionnaire du tournoi
+                # Enregistrer les modifications dans le fichier du round
+        
+        tournament_players[number]['classement'] = player["classement"]
+            
+        with open(filepath, 'w') as file:
+            json.dump(tournament_players, file, indent=2)
+
+               

@@ -1,7 +1,7 @@
 from datetime import datetime
 class Tournament():
     
-    """ initialisation du constructeur de tournoi (moule)"""
+    """ initialisation du constructeur de tournoi"""
     def __init__(self, tournament_id:None, tournament_name:str, tournament_location:str, tournament_date_start: datetime,tournament_date_end: datetime, tournament_number_of_round: int, tournament_description: str, tournament_round_number: int, tournament_round_list = [], tournament_players_list =[]):
 
         self.tournament_id = tournament_id

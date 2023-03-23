@@ -4,13 +4,63 @@
     "prenom": "jean",
     "date_de_naissance": "10/10/1977",
     "identifiant_national": "se12345",
-    "classement": "0"
+    "classement": "0",
+    "adversaire": []
+  },
+  {
+    "identifiant_national": "ft15231",
+    "nom": "orniere",
+    "prenom": "paul",
+    "date_de_naissance": "15/06/1962",
+    "classement": "0",
+    "adversaire": []
+  },
+  {
+    "nom": "durand",
+    "prenom": "michel",
+    "date_de_naissance": "10/10/1967",
+    "identifiant_national": "se14345",
+    "classement": "0",
+    "adversaire": []
+  },
+  {
+    "nom": "dumur",
+    "prenom": "leon",
+    "date_de_naissance": "01/01/1956",
+    "identifiant_national": "hu98765",
+    "classement": "0",
+    "adversaire": []
   },
   {
     "nom": "ingberg",
     "prenom": "thor",
     "date_de_naissance": "10/01/1985",
     "identifiant_national": "qz15926",
-    "classement": "0"
+    "classement": "0",
+    "adversaire": []
+  },
+  {
+    "nom": "dumur",
+    "prenom": "jean",
+    "date_de_naissance": "01/01/1956",
+    "identifiant_national": "hu98865",
+    "classement": "0",
+    "adversaire": []
+  },
+  {
+    "identifiant_national": "bh12345",
+    "nom": "bord",
+    "prenom": "ruth",
+    "date_de_naissance": "02/10/1985",
+    "classement": "0",
+    "adversaire": []
+  },
+  {
+    "identifiant_national": "jn12345",
+    "nom": "bru",
+    "prenom": "alix",
+    "date_de_naissance": "15/06/1975",
+    "classement": "0",
+    "adversaire": []
   }
 ]

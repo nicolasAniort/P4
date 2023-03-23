@@ -78,15 +78,22 @@ class PlayerController():
                 break
             except ValueError:
                 print("Veuillez entrer un nom valide")
+        while True:
+            try:
+                adversary = []
+                break
+            except ValueError:
+                print("Veuillez entrer un nom valide")
                 
-        player: Player = Player(last_name, first_name, birth_date, national_id, rank)
+        player: Player = Player(last_name, first_name, birth_date, national_id, rank, adversary)
             
         new_player = {
             "identifiant_national": player.national_id,
             "nom": player.last_name,
             "prenom": player.first_name,
             "date_de_naissance" : player.birth_date,            
-            "classement": player.rank
+            "classement": player.rank,
+            "adversaire":player.adversary
         }
         players.append(new_player)
         return players
@@ -154,6 +161,7 @@ class PlayerController():
         except json.JSONDecodeError:
             print("Le fichier de données des joueurs est corrompu.")
             return None    
+   
     """Chercher un joueur dans le fichier json à partir de son identifiant nationnal ses informations"""
     def search_player(self, search_criteria):
         players = []
@@ -175,6 +183,7 @@ class PlayerController():
                 None
         print("Aucun joueur n'a été trouvé avec les critères de recherche '{}'".format(search_criteria))
         return None    
+    
     """lire la fiche d'un joueur dans le fichier json"""
     def reader_player(self, national_id):
         national_id_search = national_id
@@ -192,6 +201,7 @@ class PlayerController():
                 player_for_tournament.birth_date = player["date_de_naissance"]
                 player_for_tournament.national_id = player["identifiant_national"]
                 player_for_tournament.rank = player["classement"]
+                player_for_tournament.adversary = player["adversaire"]
                 return player_for_tournament
 
     def update_file_players(self, players,file_path):    
