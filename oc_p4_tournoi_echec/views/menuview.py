@@ -13,65 +13,73 @@ class Menu:
 
     def display_main_menu(self):
         """l'affichage du menu principal"""
+        end_lig1 = "-----------------|"
+        
         print("")
-        print("---------------------------------------------------------------------|")
-        print("---------------------Menu principal----------------------------------|")
-        print("---------------------------------------------------------------------|")
-        print("1. Joueurs                             ------------------------------|")
-        print("2. Tournois                            ------------------------------|")
-        print("3. Rapport                             ------------------------------|")
-        print("4. Quitter le programme                ------------------------------|")
-        print("---------------------------------------------------------------------|")
+        print(f"---------------------Me principal-----------------{ end_lig1}")
+        print(f"--------------------------------------------------{ end_lig1}")
+        print(f"--------------------------------------------------{ end_lig1}")
+        print(f"1. Joueurs                           -------------{ end_lig1}")
+        print(f"2. Tournois                          -------------{ end_lig1}")
+        print(f"3. Rapport                           -------------{ end_lig1}")
+        print(f"4. Quitter le programme                -----------{ end_lig1}")
+        print(f"--------------------------------------------------{ end_lig1}")
 
     def display_players_menu(self):
         """affichage du menu des joueurs"""
+        end_lig1 = "-----------------|"
         print("")
-        print("---------------------------------------------------------------------|")
-        print("------------------------Menu joueur----------------------------------|")
-        print("---------------------------------------------------------------------|")
-        print("11. ajouter un joueur                     ---------------------------|")
-        print("12. Mise à jour du classement d'un joueur ---------------------------|")
-        print("13. retour au menu principal              ---------------------------|")
-        print("---------------------------------------------------------------------|")
+        print(f"--------------------------------------------------{end_lig1}")
+        print(f"------------------------Menu joueur---------------{end_lig1}")
+        print(f"--------------------------------------------------{end_lig1}")
+        print(f"11. ajouter un joueur                     --------{end_lig1}")
+        print(f"12. Mise à jour du classement d'un joueur --------{end_lig1}")
+        print(f"13. retour au menu principal              --------{end_lig1}")
+        print(f"--------------------------------------------------{end_lig1}")
 
     def display_tournaments_menu(self):
         """affichage du menu du tournoi"""
+        end_lig1 = "-----------------|"
         print("")
-        print("---------------------------------------------------------------------|")
-        print("------------------------Menu tournoi---------------------------------|")
-        print("---------------------------------------------------------------------|")
-        print("21. Créer un tournoi                      ---------------------------|")
-        print("22. Sélectionner un tournoi               ---------------------------|")
-        print("23. retour au menu principal              ---------------------------|")
-        print("---------------------------------------------------------------------|")
+        print(f"--------------------------------------------------{end_lig1}")
+        print(f"------------------------Menu tournoi--------------{end_lig1}")
+        print(f"--------------------------------------------------{end_lig1}")
+        print(f"21. Créer un tournoi                      --------{end_lig1}")
+        print(f"22. Sélectionner un tournoi               --------{end_lig1}")
+        print(f"23. retour au menu principal              --------{end_lig1}")
+        print(f"--------------------------------------------------{end_lig1}")
 
     def display_tournaments_submenu(self, tournament: Tournament):
         """affichage du menu du tournoi"""
+        end_lig1 = "-----------------|"
+        end_l2 = "                --------|"
         print("")
-        print("---------------------------------------------------------------------|")
-        print("----------------Sous-Menu du tournoi---------------------------------|")
-        print("---------------------------------------------------------------------|")
-        print("221. Ajouter un joueur                                       --------|")
-        print("222. Générer les tours et les matchs                         --------|")
-        print("223. Saisie des scores                                       --------|")
-        print("224. Rapport: liste des joueurs par classement               --------|")
-        print("225. Rapport: liste des joueurs par ordre alphabétique       --------|")
-        print("229. retour au menu supérieur                                --------|")
-        print("---------------------------------------------------------------------|")
+        print(f"--------------------------------------------------{end_lig1}")
+        print(f"----------------Sous-Menu du tournoi--------------{end_lig1}")
+        print(f"--------------------------------------------------{end_lig1}")
+        print(f"221. Ajouter un joueur                       {end_l2}")
+        print(f"222. Générer les tours et les matchs         {end_l2}")
+        print(f"223. Saisie des scores                       {end_l2}")
+        print(f"224. Liste des joueurs par classement        {end_l2}")
+        print(f"225. Liste des joueurs par ordre alphabétique{end_l2}")
+        print(f"229. retour au menu supérieur                {end_l2}")
+        print(f"--------------------------------------------------{end_lig1}")
 
     def display_rapport_menu(self):
         """Affichage des rapports"""
+        end_lig1 = "-------------------|"
+        end_lig2 = "              -------|"
         print("")
-        print("---------------------------------------------------------------------|")
-        print("------------------------Menu rapport---------------------------------|")
-        print("---------------------------------------------------------------------|")
-        print("31. Affichage des joueurs par ordre alphabétique              -------|")
-        print("32. Affichage des joueurs par score                           -------|")
-        print("33. Affichage de tous les tournois                            -------|")
-        print("34. Affichage des joueurs par ordre alphabétique et par tours -------|")
-        print("35. Affichage des joueurs par score et par tours              -------|")
-        print("36. retour au menu principal                                  -------|")
-        print("---------------------------------------------------------------------|")
+        print(f"--------------------------------------------------{end_lig1}")
+        print(f"------------------------Menu rapport--------------{end_lig1}")
+        print(f"--------------------------------------------------{end_lig1}")
+        print(f"31. Affichage des joueurs par ordre alphabétique{end_lig2}")
+        print(f"32. Affichage des joueurs par score             {end_lig2}")
+        print(f"33. Affichage de tous les tournois              {end_lig2}")
+        print(f"34. Affichage des joueurs par ordre alphatours  {end_lig2}")
+        print(f"35. Affichage des joueurs par score et par tours{end_lig2}")
+        print(f"36. retour au menu principal                    {end_lig2}")
+        print(f"--------------------------------------------------{end_lig1}")
 
     def choice_to_quit(self):
         confirm = input("Si vous souhaitez quitter, tapez 0 : ")

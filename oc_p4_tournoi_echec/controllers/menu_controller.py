@@ -67,7 +67,7 @@ class MenuController:
                             case "22":
                                 # Selectionner un tournoi
                                 tournament_choice = (
-                                    self.tournamentcontroller.list_tournament_for_choice()
+                                    self.tournamentcontroller.list_tournament_choice()
                                 )
                                 print(
                                     "tournament choisi :",
@@ -88,19 +88,22 @@ class MenuController:
                                             )
                                             sub = 0
                                         case "222":
-                                            # Générer les tours et les matchs et afficher le tableau
+                                            # Générer les tours et les matchs 
+                                            # et afficher le tableau
                                             self.roundcontroller.create_round(
                                                 tournament_choice
                                             )
                                             sub = 0
                                         case "223":
-                                            # mise à jours des scores des matchs du round
+                                            # mise à jours des scores des 
+                                            # matchs du round
                                             self.roundcontroller.update_round(
                                                 tournament_choice
                                             )
                                             sub = 0
                                         case "224":
-                                            # liste des joueurs triés par classement decroissant
+                                            # liste des joueurs triés par
+                                            # classement decroissant
                                             self.tournamentcontroller.report_player_by_rank(
                                                 tournament_choice
                                             )
@@ -137,17 +140,19 @@ class MenuController:
                                 # affichage des joueurs par score
                                 file_path = "data/player/player_data.json"
                                 new_repport_rank_player = PlayerController()
-                                new_repport_rank_player.list_players_by_rank(file_path)
+                                new_repport_rank_player.list_players_by_rank(
+                                    file_path)
                                 w = 0
 
                             case "33":
                                 # affichage de tous les tournois
                                 new_report_tournament = TournamentController()
-                                new_report_tournament.list_registred_tournaments()
+                                new_report_tournament.list_saved_tournaments()
                                 w = 0
 
                             case "34":
-                                # affichage des joueurs par ordre alphabetique et par tours
+                                # affichage des joueurs par ordre alphabetique 
+                                # et par tours
                                 w = 0
                             case "35":
                                 # affichage des joueurs par score et par tours

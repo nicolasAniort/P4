@@ -1,6 +1,4 @@
-import json
-from models.tournament import Tournament
-from models.player import Player
+from controllers.tournament_controller import TournamentController
 
 
 class TournamentView:
@@ -10,7 +8,7 @@ class TournamentView:
     def __init__(self):
         pass
 
-    """Affiche le formulaire de création du tournoi et l'enregistre dans la base de données"""
+    """Affiche le formulaire de création du tournoi et l'enregistre """
 
     def show_create_tournament(self):
         print("---------------------------------------------------------------------|")
@@ -21,7 +19,8 @@ class TournamentView:
         list_input_players[1] = input("Lieu: ")
         list_input_players[2] = input("Date de debut: ")
         list_input_players[3] = input("Date de fin: ")
-        list_input_players[4] = input("Remarque générales du directeur du tournoi: ")
+        list_input_players[4] = input(
+            "Remarque générales du directeur du tournoi: ")
         return list_input_players
 
     def display_tournament_created(self):
@@ -54,21 +53,19 @@ class TournamentView:
             len(tournament["lieu"]) for tournament in tournament_list
         )
         # Afficher l'en-tête de la table
-        header = "| {:<{}} | {:<{}} | {:<6} | {:<8} | {:<3} |".format(
+        header ="| {:<{}} | {:<{}} | {:<6} | {:<8} | {:<3} |".format(
             "Nom du tournoi",
             longest_name_len,
             "Lieu",
             longest_firstname_len,
             "Date de début",
             "Date de fin",
-            "Nombre de round",
-            "Description du tournoi",
-            "Numero du round en cour",
-            "Listes de rounds",
-            "Liste des joueurs",
+            "Nombre de round"
         )
 
-        separator = "|" + "-" * (longest_name_len + longest_firstname_len + 53) + "|"
+        separator = "|" + "-" * (
+            longest_name_len + longest_firstname_len + 53
+            ) + "|"
         print("")
         print(separator)
         print(header)
@@ -82,11 +79,7 @@ class TournamentView:
                 longest_firstname_len,
                 row["date_de_debut"],
                 row["date_de_fin"],
-                row["nombre_de_round"],
-                row["description_tournoi"],
-                row["numero_round_actif"],
-                row["liste_des_rounds"],
-                row["liste_des_joueurs"],
+                row["nombre_de_round"]                
             )
             print(line)
 
@@ -117,7 +110,8 @@ class TournamentView:
         )
         separator = (
             "|"
-            + "-" * (len_match + (max_len_tournament) + (date_start_tournament) + 11)
+            + "-" * (len_match
+                     + (max_len_tournament) + (date_start_tournament) + 11)
             + "|"
         )
 
@@ -126,7 +120,6 @@ class TournamentView:
         print(separator)
         # Affichage de la liste des tournois avec leur numéro d'index
         for index, tournament in enumerate(tournament_list):
-            # print(f"{index}: {tournament['nom_du_tournoi']},{tournament['date_de_debut']}")
             content = "| {:<{}} | {:^{}} | {:^{}}    |".format(
                 str(index),
                 len_match,
@@ -141,7 +134,8 @@ class TournamentView:
         print("")
 
     def display_choice_tournament(self):
-        index_selected = int(input("Sélectionnez un tournoi en entrant son numéro: "))
+        index_selected = int(
+            input("Sélectionnez un tournoi en entrant son numéro: "))
         return index_selected
 
     """Affiche le formulaire d'ajout d'un joueur au tournoi actif"""
@@ -161,7 +155,7 @@ class TournamentView:
 
     def display_enter_player(self, index: str):
         print(
-            "Entrer le nouveau classement du joueur, identifiant national N° : "
+            "Entrer le nouveau classement du joueur, identifiant national N°:"
             + str(index)
         )
 

@@ -47,8 +47,6 @@ class TournamentController:
             pass
         except json.JSONDecodeError:
             pass
-        new_tournament_name = tournament.tournament_name
-        new_tournament_date_start = tournament.tournament_date_start
         new_tournament = {
             "id du tournoi": tournament.tournament_id,
             "nom_du_tournoi": tournament.tournament_name,
@@ -86,7 +84,7 @@ class TournamentController:
 
     """Liste des tournois enregistrés"""
 
-    def list_registred_tournaments(self):
+    def list_saved_tournaments(self):
         """Liste des tournois classés par ordre alphabétique"""
         # Charger les données à partir du fichier tournament_data.json
         tournament_data = []
@@ -94,17 +92,15 @@ class TournamentController:
             file_contents = file.read()
             tournament_data = json.loads(file_contents)
         # tri par ordre alphabétique
-        tournament_data_alphabetical = sorted(
-            tournament_data, key=lambda tournament: tournament["nom_du_tournoi"]
-        )
+        trnmt_data_alphabetical = sorted(tournament_data, key=lambda tournament: tournament["nom_du_tournoi"])
         # appel de la fonction qui créé la vue des tournois pour choisir
         TournamentView.list_tournaments_for_choice_view(
-            self, tournament_list=tournament_data_alphabetical
+            self, tournament_list=trnmt_data_alphabetical
         )
 
     """Liste des tournois classés par date"""
 
-    def list_tournament_for_choice(self):
+    def list_tournament_choice(self):
         # Charger les données à partir du fichier tournament_data.json
         tournament_data = []
         with open("data/tournaments/tournament_data.json", "r") as file:
@@ -118,7 +114,7 @@ class TournamentController:
             key=lambda tournament: tournament["nom_du_tournoi"],
         )
         # appel de la fonction qui créé la vue des tournois pour choisir
-        selected_index = TournamentView.list_tournaments_for_choice_view(
+        TournamentView.list_tournaments_for_choice_view(
             self, tournament_list=tournament_data_date
         )
         # Accès au tournoi sélectionné
@@ -149,8 +145,9 @@ class TournamentController:
         with open(fpath, "r") as file:
             tournament_players = json.load(file)
 
-        # si l'identifiant existe déjà dans la basee de données d'inscrits, alors on inscrit automatiquement le joueur
-        if player_new != None:
+        # si l'identifiant existe déjà dans la basee de données d'inscrits,
+        # alors on inscrit automatiquement le joueur
+        if player_new is not None:
             player_for_tournament = PlayerController.reader_player(
                 self, national_id=national_id_new
             )
@@ -172,9 +169,10 @@ class TournamentController:
             PlayerController.update_file_players(
                 self, players=new_user, file_path=fpath
             )
+            f_path = "data/player/player_data.json"
             PlayerController.update_file_players(
-                self, players=new_user, file_path="data/player/player_data.json"
-            )
+                self, players=new_user, file_path=f_path
+                )
 
     def tournament_rank_players_update(self, tournament, match_end):
         prefixed_tournament = tournament.get("id du tournoi")
@@ -188,19 +186,26 @@ class TournamentController:
         player2 = match_end["match"]["player2"]
 
         for number, player in enumerate(tournament_players):
-            if player["identifiant_national"] == player1["identifiant_national"]:
+            id_player1 = player1["identifiant_national"]
+            id_player2 = player2["identifiant_national"]
+            if player["identifiant_national"] == id_player1:
                 # additionner le score au score existant
                 player["classement"] = str(
-                    int(player["classement"]) + int(match_end["match"]["score1"])
+                    int(
+                        player["classement"]) + int(
+                            match_end["match"]["score1"])
                 )
-                # Mettre à jour les scores correspondants dans le dictionnaire du tournoi
+                # Mettre à jour les scores correspondants
+                # dans le dictionnaire du tournoi
 
-            elif player["identifiant_national"] == player2["identifiant_national"]:
+            elif player["identifiant_national"] == id_player2:
                 # additionner le score au score existant
                 player["classement"] = str(
-                    int(player["classement"]) + int(match_end["match"]["score2"])
+                    int(player["classement"]) + int(
+                        match_end["match"]["score2"])
                 )
-                # Mettre à jour les scores correspondants dans le dictionnaire du tournoi
+                # Mettre à jour les scores correspondants
+                # dans le dictionnaire du tournoi
                 # Enregistrer les modifications dans le fichier du round
 
         tournament_players[number]["classement"] = player["classement"]
@@ -209,9 +214,11 @@ class TournamentController:
             json.dump(tournament_players, file, indent=2)
 
     def report_player_by_rank(self, tournament):
-        fpath = "data/tournaments/" + tournament.get("id du tournoi") + "_players.json"
+        fsuffix = "_players.json"
+        fpath = "data/tournaments/" + tournament.get("id du tournoi") + fsuffix
         PlayerController.list_players_by_rank(self, fpath)
 
     def report_player_by_name(self, tournament):
-        fpath = "data/tournaments/" + tournament.get("id du tournoi") + "_players.json"
+        fsuffix = "_players.json"
+        fpath = "data/tournaments/" + tournament.get("id du tournoi") + fsuffix
         PlayerController.list_registred_players(self, fpath)

@@ -108,12 +108,17 @@ class PlayerController:
             file_contents = file.read()
             player_data = json.loads(file_contents)
         # tri par ordre alphabétique
-        player_data_alphabetical = sorted(player_data, key=lambda player: player["nom"])
+        player_data_alphabetical = sorted(player_data,
+                                          key=lambda player: player["nom"])
         # trouver la taille maximale pour le nom et le prénom
         longest_name_len = max(len(player["nom"]) for player in player_data)
-        longest_firstname_len = max(len(player["prenom"]) for player in player_data)
+        longest_firstname_len = max(len(player["prenom"])
+                                    for player in player_data)
         PlayerView.list_players_view(
-            self, player_data_alphabetical, longest_name_len, longest_firstname_len
+            self,
+            player_data_alphabetical,
+            longest_name_len,
+            longest_firstname_len
         )
 
     def list_players_by_rank(self, filepath):
@@ -129,12 +134,13 @@ class PlayerController:
         )
         # trouver la taille maximale pour le nom et le prénom
         longest_name_len = max(len(player["nom"]) for player in player_data)
-        longest_firstname_len = max(len(player["prenom"]) for player in player_data)
+        longest_firstname_len = max(len(player["prenom"])
+                                    for player in player_data)
         PlayerView.list_players_view(
             self, player_data_rank, longest_name_len, longest_firstname_len
         )
 
-    """Changer le classement d'un joueur dans le fichier json player_data.json"""
+    """Changer le classement d'un joueur dans le fichier player_data.json"""
 
     def change_rank_player(self):
         PlayerView.display_change_rank_introduce(self)
@@ -146,9 +152,12 @@ class PlayerController:
 
         player_name = PlayerView.input_last_name(self)
         player_firstname = PlayerView.input_first_name(self)
+        
         # trouver le joueur dont le classement doit être modifié
         for player in player_data:
-            if player["nom"] == player_name and player["prenom"] == player_firstname:
+            pname = player["nom"]
+            pfirstname = player["prenom"]
+            if pname == player_name and pfirstname == player_firstname:
                 a = 0
                 while a < 1:
                     try:
@@ -158,7 +167,8 @@ class PlayerController:
                         # break
                     except ValueError:
                         print(
-                            "Erreur, Veuillez renouveller votre frappe au format numérique: ")
+                            "Erreur, Veuillez saisir une valeur au format numérique: "
+                            )
 
         # Écrire les données modifiées dans le fichier player_data.json
         try:
@@ -190,11 +200,7 @@ class PlayerController:
                 return player
             else:
                 None
-        print(
-            "Aucun joueur n'a été trouvé avec les critères de recherche '{}'".format(
-                search_criteria
-            )
-        )
+        print(f"Aucun joueur n'a été trouvé avec ces critères {search_criteria}")
         return None
 
     """lire la fiche d'un joueur dans le fichier json"""

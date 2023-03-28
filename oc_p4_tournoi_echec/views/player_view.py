@@ -1,11 +1,3 @@
-import re
-import json
-from models.player import Player
-
-# from controllers.player_controller import PlayerController
-from views.menuview import Menu
-
-
 class PlayerView:
 
     """initialisation du constructeur de joueur"""
@@ -13,7 +5,7 @@ class PlayerView:
     def __init__(self):
         pass
 
-    """Affiche le formulaire de création de joueur et l'enregistre dans la base de données"""
+    """Affiche le formulaire de création de joueur """
 
     def show_create_player(self):
         print("---------------------------------------------------------------------|")
@@ -62,7 +54,7 @@ class PlayerView:
         print("Entrez les informations de recherche du joueur")
 
     def display_change_rank_ok(self):
-        print(f"le classement du joueur a été modifié avec succès")
+        print("le classement du joueur a été modifié avec succès")
 
     def list_players_view(self, player_by_alphabetic, longest_name, longest_firstname):
         # tri par ordre alphabétique
