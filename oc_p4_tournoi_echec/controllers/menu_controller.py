@@ -28,7 +28,7 @@ class MenuController:
                 case "1":
                     """acces à la creation d'un tournoi"""
                     self.tmtcontroller.create_tournament()
-                    x = 0                    
+                    x = 0
                 case "2":
                     # Selectionner un tournoi
                     tournament_choice = (
