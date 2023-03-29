@@ -4,10 +4,9 @@
     "prenom": "jean",
     "date_de_naissance": "10/10/1977",
     "identifiant_national": "se12345",
-    "classement": "2",
+    "classement": "2.0",
     "adversaire": [
-      "hu98865",
-      "ft15231"
+      "hu98865"
     ]
   },
   {
@@ -15,10 +14,9 @@
     "nom": "orniere",
     "prenom": "paul",
     "date_de_naissance": "15/06/1962",
-    "classement": "0",
+    "classement": "0.5",
     "adversaire": [
-      "jn12345",
-      "se12345"
+      "ji48596"
     ]
   },
   {
@@ -26,7 +24,7 @@
     "prenom": "michel",
     "date_de_naissance": "10/10/1967",
     "identifiant_national": "se14345",
-    "classement": "0",
+    "classement": "1.0",
     "adversaire": [
       "qz15926"
     ]
@@ -36,9 +34,9 @@
     "prenom": "leon",
     "date_de_naissance": "01/01/1956",
     "identifiant_national": "hu98765",
-    "classement": "0",
+    "classement": "2.0",
     "adversaire": [
-      "bh12345"
+      "jn12345"
     ]
   },
   {
@@ -46,7 +44,7 @@
     "prenom": "thor",
     "date_de_naissance": "10/01/1985",
     "identifiant_national": "qz15926",
-    "classement": "2",
+    "classement": "1.0",
     "adversaire": [
       "se14345"
     ]
@@ -56,7 +54,7 @@
     "prenom": "jean",
     "date_de_naissance": "01/01/1956",
     "identifiant_national": "hu98865",
-    "classement": "2",
+    "classement": "0.0",
     "adversaire": [
       "se12345"
     ]
@@ -68,7 +66,7 @@
     "date_de_naissance": "02/10/1985",
     "classement": "2",
     "adversaire": [
-      "hu98765"
+      "gf15225"
     ]
   },
   {
@@ -76,7 +74,27 @@
     "nom": "bru",
     "prenom": "alix",
     "date_de_naissance": "15/06/1975",
-    "classement": "2",
+    "classement": "0.0",
+    "adversaire": [
+      "hu98765"
+    ]
+  },
+  {
+    "identifiant_national": "gf15225",
+    "nom": "dupuis",
+    "prenom": "nicolas",
+    "date_de_naissance": "09/02/1975",
+    "classement": "0",
+    "adversaire": [
+      "bh12345"
+    ]
+  },
+  {
+    "identifiant_national": "ji48596",
+    "nom": "dutour",
+    "prenom": "fanny",
+    "date_de_naissance": "05/03/1998",
+    "classement": "0.5",
     "adversaire": [
       "ft15231"
     ]

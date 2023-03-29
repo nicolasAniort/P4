@@ -1,4 +1,5 @@
 {
     "git.allowForcePush": true,
-    "git.allowNoVerifyCommit": true
+    "git.allowNoVerifyCommit": true,
+    "python.analysis.typeCheckingMode": "off"
 }

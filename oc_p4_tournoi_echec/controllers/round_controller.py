@@ -285,7 +285,7 @@ class RoundController:
                 break
 
         # Clôture du round si tous les matchs ont été joués
-        if all_played == True:
+        if all_played is True:
             # mise a jour numero du round actif
             tournament.update({"numero_round_actif": round_number + 1})
             # recuperation de lid du tournoi actif
@@ -312,3 +312,31 @@ class RoundController:
 
             RoundController.create_round(self, tournament)
             RoundView.display_end_current_round(self, tournament)
+    """Mise à jour du round"""
+
+    def list_rounds(self, tournament):
+
+        # intialisation des chemin de fichiers
+        count = int(tournament.get("numero_round_actif"))
+        iterate = 1
+        while iterate <= count:
+            print(iterate)
+            self.name = "Round" + str(iterate)
+            file_path = (
+                "data/rounds/"
+                + tournament.get("id du tournoi")
+                + self.name + ".json"
+            )
+            # lecture du fichier du round actif
+            with open(file_path, "r") as file:
+                file_contents = file.read()
+                round_data = json.loads(file_contents)
+            # with open(update_player_tournament_path, "r") as file:
+            #    file_contents = file.read()
+            #    players_data = json.loads(file_contents)
+
+            # afficher le round et la liste de match
+            RoundView.display_rounds(
+                self, self.name, file_path, round_data
+            )
+            iterate = iterate + 1

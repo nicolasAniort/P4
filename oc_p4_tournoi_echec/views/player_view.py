@@ -8,16 +8,18 @@ class PlayerView:
     """Affiche le formulaire de création de joueur """
 
     def show_create_player(self):
-        print("---------------------------------------------------------------------|")
-        print("-----------------------Création d'un joueur--------------------------|")
-        print("---------------------------------------------------------------------|")
+        end_line = "------------------|"
+        print(f"---------------------------------------------------{end_line}")
+        print(f"-----------------------Création d'un joueur--------{end_line}")
+        print(f"---------------------------------------------------{end_line}")
 
     def input_national_id(self):
         input_id = input("Identifiant national: ")
         return input_id
 
     def error_national_id(self):
-        print("L'identifiant national doit contenir deux lettres et cinq chiffres")
+        formatid = "deux lettres et cinq chiffres"
+        print(f"L'identifiant national doit contenir{formatid}")
 
     def input_last_name(self):
         input_id = input("Nom de famille: ")
@@ -48,15 +50,20 @@ class PlayerView:
         print(" La saisie du joueur a été enregistrée dans la base de données")
 
     def display_change_rank_introduce(self):
-        print("---------------------------------------------------------------------|")
-        print("-------------Mise à jour du classement du joueur---------------------|")
-        print("---------------------------------------------------------------------|")
+        end_line = "------------------|"
+        print(f"---------------------------------------------------{end_line}")
+        print(f"-------------Mise à jour du classement du joueur---{end_line}")
+        print(f"---------------------------------------------------{end_line}")
         print("Entrez les informations de recherche du joueur")
 
     def display_change_rank_ok(self):
         print("le classement du joueur a été modifié avec succès")
 
-    def list_players_view(self, player_by_alphabetic, longest_name, longest_firstname):
+    def list_players_view(
+            self,
+            player_by_alphabetic,
+            longest_name,
+            longest_firstname):
         # tri par ordre alphabétique
         player_data_alphabetical = player_by_alphabetic
 
@@ -74,7 +81,8 @@ class PlayerView:
             "date_de_naissance",
             "classement",
         )
-        separator = "|" + "-" * (longest_name_len + longest_firstname_len + 52) + "|"
+        separator = "|" + "-" * (
+            longest_name_len + longest_firstname_len + 52) + "|"
         print("")
         print(separator)
         print(header)
@@ -104,7 +112,7 @@ class PlayerView:
 
     def display_enter_player_ranking(self, index: str):
         print(
-            "Entrer le nouveau classement du joueur, identifiant national N° : "
+            "Entrer le nouveau classement du joueur, id national N° : "
             + str(index)
         )
 

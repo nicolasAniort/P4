@@ -62,5 +62,21 @@
     "date_de_naissance": "15/06/1975",
     "classement": "0",
     "adversaire": []
+  },
+  {
+    "identifiant_national": "gf15225",
+    "nom": "dupuis",
+    "prenom": "nicolas",
+    "date_de_naissance": "09/02/1975",
+    "classement": "0",
+    "adversaire": []
+  },
+  {
+    "identifiant_national": "ji48596",
+    "nom": "dutour",
+    "prenom": "fanny",
+    "date_de_naissance": "05/03/1998",
+    "classement": "0",
+    "adversaire": []
   }
 ]

@@ -92,10 +92,12 @@ class TournamentController:
             file_contents = file.read()
             tournament_data = json.loads(file_contents)
         # tri par ordre alphabétique
-        trnmt_data_alphabetical = sorted(tournament_data, key=lambda tournament: tournament["nom_du_tournoi"])
+        data_alphabetic = sorted(
+            tournament_data,
+            key=lambda tournament: tournament["nom_du_tournoi"])
         # appel de la fonction qui créé la vue des tournois pour choisir
         TournamentView.list_tournaments_for_choice_view(
-            self, tournament_list=trnmt_data_alphabetical
+            self, tournament_list=data_alphabetic
         )
 
     """Liste des tournois classés par date"""
@@ -191,8 +193,8 @@ class TournamentController:
             if player["identifiant_national"] == id_player1:
                 # additionner le score au score existant
                 player["classement"] = str(
-                    int(
-                        player["classement"]) + int(
+                    float(
+                        player["classement"]) + float(
                             match_end["match"]["score1"])
                 )
                 # Mettre à jour les scores correspondants
@@ -201,7 +203,7 @@ class TournamentController:
             elif player["identifiant_national"] == id_player2:
                 # additionner le score au score existant
                 player["classement"] = str(
-                    int(player["classement"]) + int(
+                    float(player["classement"]) + float(
                         match_end["match"]["score2"])
                 )
                 # Mettre à jour les scores correspondants

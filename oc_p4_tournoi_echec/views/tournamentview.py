@@ -1,6 +1,3 @@
-from controllers.tournament_controller import TournamentController
-
-
 class TournamentView:
 
     """initialisation du constructeur de la vue tournoi"""
@@ -11,9 +8,10 @@ class TournamentView:
     """Affiche le formulaire de création du tournoi et l'enregistre """
 
     def show_create_tournament(self):
-        print("---------------------------------------------------------------------|")
-        print("-----------------Création d'un tournoi-------------------------------|")
-        print("---------------------------------------------------------------------|")
+        end_lig1 = "------------------|"
+        print(f"---------------------------------------------------{end_lig1}")
+        print(f"-----------------Création d'un tournoi-------------{end_lig1}")
+        print(f"---------------------------------------------------{end_lig1}")
         list_input_players = ["", "", "", "", ""]
         list_input_players[0] = input("Nom du tournoi: ")
         list_input_players[1] = input("Lieu: ")
@@ -36,9 +34,9 @@ class TournamentView:
         print("La fin du tournoi est annoncée")
 
     """Affiche la liste des tournois dans la base de données"""
-
+    """
     def list_tournaments_view(self):
-        tournament_list = TournamentController.list_registred_tournaments(self)
+        tournament_list = TournamentController.list_saved_tournaments(self)
         # tri par ordre du plus ancien au plus
         tournament_data_alphabetical = sorted(
             tournament_list,
@@ -53,7 +51,7 @@ class TournamentView:
             len(tournament["lieu"]) for tournament in tournament_list
         )
         # Afficher l'en-tête de la table
-        header ="| {:<{}} | {:<{}} | {:<6} | {:<8} | {:<3} |".format(
+        header = "| {:<{}} | {:<{}} | {:<6} | {:<8} | {:<3} |".format(
             "Nom du tournoi",
             longest_name_len,
             "Lieu",
@@ -79,15 +77,15 @@ class TournamentView:
                 longest_firstname_len,
                 row["date_de_debut"],
                 row["date_de_fin"],
-                row["nombre_de_round"]                
-            )
+                row["nombre_de_round"]
+                )
             print(line)
 
         print(separator)
         print("")
+    """
 
     """Affiche la liste des tournois """
-
     def list_tournaments_for_choice_view(self, tournament_list):
         # afficher le round et la liste de match
         # trouver la taille maximale pour le nom et le prénom
@@ -96,10 +94,11 @@ class TournamentView:
         date_start_tournament = 26
 
         # Afficher l'en-tête de la table
+        end_lig1 = "------------------|"
         print("")
-        print("|--------------------------------------------------------------------|")
-        print("|------------------     LISTE DES TOURNOIS     ----------------------|")
-        print("|--------------------------------------------------------------------|")
+        print(f"|--------------------------------------------------{end_lig1}")
+        print(f"|------------------     LISTE DES TOURNOIS     ----{end_lig1}")
+        print(f"|--------------------------------------------------{end_lig1}")
         header = "| {:<{}} | {:^{}} | {:^{}}    |".format(
             "   ",
             len_match,
@@ -141,9 +140,10 @@ class TournamentView:
     """Affiche le formulaire d'ajout d'un joueur au tournoi actif"""
 
     def display_add_player_to_tournament(self):
-        print("---------------------------------------------------------------------|")
-        print("-----------------Ajouter un joueur au tournoi------------------------|")
-        print("---------------------------------------------------------------------|")
+        end_lig1 = "------------------|"
+        print(f"---------------------------------------------------{end_lig1}")
+        print(f"-----------------Ajouter un joueur au tournoi------{end_lig1}")
+        print(f"---------------------------------------------------{end_lig1}")
         national_id_new = str(input("Saisir l'identifiant nation du joueur: "))
         return national_id_new
 

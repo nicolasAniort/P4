@@ -19,12 +19,12 @@ class RoundView:
         score = 5
 
         # Afficher l'en-tête de la table
-
-        print("|--------------------------------------------------------------------|")
-        print(f"|--------------------  MISE A JOUR DU {name}  -----------------------|")
-        print("|--------------------     LISTE DES MATCHS     ----------------------|")
-        print("|--------------------------------------------------------------------|")
-        header = "| {:<{}} | {:^{}} | {:<{}} | {:^{}} | {:<{}} |--------|".format(
+        end_line = "------------------|"
+        print(f"|--------------------------------------------------{end_line}")
+        print(f"|--------------------  MISE A JOUR DU {name}  -----{end_line}")
+        print(f"|--------------------     LISTE DES MATCHS     ----{end_line}")
+        print(f"|--------------------------------------------------{end_line}")
+        header = "| {:<{}} | {:^{}} | {:<{}} | {:^{}} | {:<{}} ".format(
             "MATCH",
             len_match,
             "JOUEUR 1",
@@ -37,11 +37,13 @@ class RoundView:
             score,
         )
         separator = (
-            "|" + "-" * (len_match + (max_len_joueur * 2) + (score * 2) + 23) + "|"
+            "|" + "-" * (len_match +
+                         (max_len_joueur * 2) +
+                         (score * 2) + 23) + "|"
         )
 
         print(separator)
-        print(header)
+        print(header + "|--------|")
         print(separator)
 
         for index, match in enumerate(data):
@@ -57,7 +59,7 @@ class RoundView:
                 + match["match"]["player2"]["nom"]
             )
             score2 = match["match"]["score2"]
-            content = "| {:<{}} | {:<{}} | {:<{}} | {:<{}} | {:<{}} |--------|".format(
+            content = "| {:<{}} | {:<{}} | {:<{}} | {:<{}} | {:<{}} ".format(
                 str(index + 1),
                 len_match,
                 str(player1),
@@ -69,7 +71,7 @@ class RoundView:
                 str(score2),
                 score,
             )
-            print(content)
+            print(content + "|--------|")
 
         print(separator)
         print("")
@@ -77,9 +79,76 @@ class RoundView:
         match_id = input("Entrez l'ID du match à modifier : ")
         return match_id
 
+    def display_rounds(self, name, path, data):
+        # afficher le round et la liste de match
+        # trouver la taille maximale pour le nom et le prénom
+        len_match = 5
+        max_len_joueur = 15
+        score = 5
+
+        # Afficher l'en-tête de la table
+        end_line = "------------------|"
+        print(f"|--------------------------------------------------{end_line}")
+        print(f"|--------------------          {name}     ---------{end_line}")
+        print(f"|--------------------     LISTE DES MATCHS     ----{end_line}")
+        print(f"|--------------------------------------------------{end_line}")
+        header = "| {:<{}} | {:^{}} | {:<{}} | {:^{}} | {:<{}} ".format(
+            "MATCH",
+            len_match,
+            "JOUEUR 1",
+            max_len_joueur,
+            "SCORE",
+            score,
+            "JOUEUR 2",
+            max_len_joueur,
+            "SCORE",
+            score,
+        )
+        separator = (
+            "|" + "-" * (len_match +
+                         (max_len_joueur * 2) +
+                         (score * 2) + 23) + "|"
+        )
+
+        print(separator)
+        print(header + "|--------|")
+        print(separator)
+
+        for index, match in enumerate(data):
+            player1 = (
+                match["match"]["player1"]["prenom"]
+                + " "
+                + match["match"]["player1"]["nom"]
+            )
+            score1 = match["match"]["score1"]
+            player2 = (
+                match["match"]["player2"]["prenom"]
+                + " "
+                + match["match"]["player2"]["nom"]
+            )
+            score2 = match["match"]["score2"]
+            content = "| {:<{}} | {:<{}} | {:<{}} | {:<{}} | {:<{}} ".format(
+                str(index + 1),
+                len_match,
+                str(player1),
+                max_len_joueur,
+                str(score1),
+                score,
+                str(player2),
+                max_len_joueur,
+                str(score2),
+                score,
+            )
+            print(content + "|--------|")
+
+        print(separator)
+        print("")
+
     def display_end_current_round(self, tournament):
-        print(f'Le round {tournament.get("numero_round_actif")-1} est terminé!')
-        print(f'Pensez à générer le round {tournament.get("numero_round_actif")}!')
+        print(
+            f'Le round {tournament.get("numero_round_actif")-1} est terminé!')
+        print(
+            f'Génération du round {tournament.get("numero_round_actif")}!')
 
     def update_score_player1(self):
         # Demander à l'utilisateur les scores pour le joueur1

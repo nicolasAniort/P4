@@ -22,5 +22,17 @@
     "numero_round_actif": 2,
     "liste_des_rounds": [],
     "liste_des_joueurs": "data/tournaments/TR10102023_players.json"
+  },
+  {
+    "id du tournoi": "TR25042023",
+    "nom_du_tournoi": "tournoi du tout",
+    "lieu": "ALBI",
+    "date_de_debut": "25/04/2023",
+    "date_de_fin": "25/04/2023",
+    "nombre_de_round": 4,
+    "description_tournoi": "pas de remarque generale",
+    "numero_round_actif": 1,
+    "liste_des_rounds": [],
+    "liste_des_joueurs": "data/tournaments/TR25042023_players.json"
   }
 ]
