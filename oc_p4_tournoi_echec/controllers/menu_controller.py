@@ -26,7 +26,7 @@ class MenuController:
 
             match str(nb_choice):
                 case "1":
-                    """acces à la creation d'un tournoi"""
+                    # acces à la creation d'un tournoi
                     self.tmtcontroller.create_tournament()
                     x = 0
                 case "2":
@@ -90,7 +90,6 @@ class MenuController:
                             case "27":
                                 # retour au menu supérieur
                                 sub = 1
-                    """acces au sous menu tournois"""
                     x = 0
                 case "3":
                     # affichage de tous les tournois
