@@ -34,5 +34,17 @@
     "numero_round_actif": 1,
     "liste_des_rounds": [],
     "liste_des_joueurs": "data/tournaments/TR25042023_players.json"
+  },
+  {
+    "id du tournoi": "TR21042023",
+    "nom_du_tournoi": "Tournoi des ain\u00e9s",
+    "lieu": "Castres",
+    "date_de_debut": "21/04/2023",
+    "date_de_fin": "25/04/2023",
+    "nombre_de_round": 4,
+    "description_tournoi": "pas de remarques-r\u00e9glement classique",
+    "numero_round_actif": 1,
+    "liste_des_rounds": [],
+    "liste_des_joueurs": "data/tournaments/TR21042023_players.json"
   }
 ]

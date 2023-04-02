@@ -15,14 +15,14 @@ class Menu:
         """l'affichage du menu principal"""
         end_lig1 = "-----------------|"
         print("")
-        print(f"---------------------Me principal-----------------{ end_lig1}")
-        print(f"--------------------------------------------------{ end_lig1}")
-        print(f"--------------------------------------------------{ end_lig1}")
-        print(f"1. Créer un tournoi                  -------------{ end_lig1}")
-        print(f"2. Sélectionner un tournoi           -------------{ end_lig1}")
-        print(f"3. Liste des tournois                -------------{ end_lig1}")
-        print(f"4. Quitter le programme              -------------{ end_lig1}")
-        print(f"--------------------------------------------------{ end_lig1}")
+        print(f"---------------------Menu principal-----------------{ end_lig1}")
+        print(f"----------------------------------------------------{ end_lig1}")
+        print(f"----------------------------------------------------{ end_lig1}")
+        print(f"1. Créer un tournoi                  ---------------{ end_lig1}")
+        print(f"2. Sélectionner un tournoi           ---------------{ end_lig1}")
+        print(f"3. Liste des tournois                ---------------{ end_lig1}")
+        print(f"4. Quitter le programme              ---------------{ end_lig1}")
+        print(f"----------------------------------------------------{ end_lig1}")
 
     def display_tournaments_submenu(self, tournament: Tournament):
         """affichage du menu du tournoi"""
