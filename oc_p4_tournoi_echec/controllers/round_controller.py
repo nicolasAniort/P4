@@ -252,9 +252,9 @@ class RoundController:
 
                 RoundView.display_score_update_ok(self)
                 RoundController.check_round(self, tournament)
-                TournamentController.tournament_rank_players_update(
-                    self, tournament, match
-                )
+                # TournamentController.tournament_rank_players_update(
+                #    self, tournament, match
+                # )
                 break
             elif match["id_round"] != id_selected and int(id_selected) <= len(
                 round_data
