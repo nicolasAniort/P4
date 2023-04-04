@@ -27,5 +27,8 @@ Vous pouvez enfin lancer le script:
 ```
 python main.py
 ```
-
-
+## Test de conformité PEP8 avec Flake8:
+Tapez la ligne de commande suivante pour générer le rapport
+```
+flake8 --format=html --htmldir=flake-report --exclude=env --max-line-length=119
+```

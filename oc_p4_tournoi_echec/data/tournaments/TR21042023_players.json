@@ -1,8 +1,18 @@
 [
   {
-    "identifiant_nationnal": "",
-    "nom": "",
-    "prenom": "",
-    "classement": ""
+    "identifiant_national": "ki12563",
+    "nom": "brun",
+    "prenom": "joseph",
+    "date_de_naissance": "01/12/1998",
+    "classement": "0",
+    "adversaire": []
+  },
+  {
+    "identifiant_national": "bg14569",
+    "nom": "Bras",
+    "prenom": "Norbert",
+    "date_de_naissance": "01/01/1969",
+    "classement": "0",
+    "adversaire": []
   }
 ]

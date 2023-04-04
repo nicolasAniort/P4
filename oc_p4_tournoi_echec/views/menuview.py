@@ -13,16 +13,16 @@ class Menu:
 
     def display_main_menu(self):
         """l'affichage du menu principal"""
-        end_lig1 = "-----------------|"
+        end_lig1 = "-------------------|"
         print("")
-        print(f"---------------------Menu principal-----------------{ end_lig1}")
-        print(f"----------------------------------------------------{ end_lig1}")
-        print(f"----------------------------------------------------{ end_lig1}")
-        print(f"1. Créer un tournoi                  ---------------{ end_lig1}")
-        print(f"2. Sélectionner un tournoi           ---------------{ end_lig1}")
-        print(f"3. Liste des tournois                ---------------{ end_lig1}")
-        print(f"4. Quitter le programme              ---------------{ end_lig1}")
-        print(f"----------------------------------------------------{ end_lig1}")
+        print(f"--------------------------------------------------{ end_lig1}")
+        print(f"---------------------Menu principal---------------{ end_lig1}")
+        print(f"--------------------------------------------------{ end_lig1}")
+        print(f"1. Créer un tournoi                  -------------{ end_lig1}")
+        print(f"2. Sélectionner un tournoi           -------------{ end_lig1}")
+        print(f"3. Liste des tournois                -------------{ end_lig1}")
+        print(f"4. Quitter le programme              -------------{ end_lig1}")
+        print(f"--------------------------------------------------{ end_lig1}")
 
     def display_tournaments_submenu(self, tournament: Tournament):
         """affichage du menu du tournoi"""
@@ -38,7 +38,7 @@ class Menu:
         print(f"24. Liste des joueurs par classement        {end_l2}")
         print(f"25. Liste des joueurs par ordre alphabétique{end_l2}")
         print(f"26. Liste des rounds et  matchs             {end_l2}")
-        print(f"29. retour au menu supérieur                {end_l2}")
+        print(f"27. retour au menu supérieur                {end_l2}")
         print(f"--------------------------------------------------{end_lig1}")
 
     def choice_to_quit(self):

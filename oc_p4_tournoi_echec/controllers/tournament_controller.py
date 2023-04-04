@@ -67,13 +67,6 @@ class TournamentController:
             json.dump(tournaments, file, indent=2)
 
         tournament_players = []
-        new_tournament_players_file = {
-            "identifiant_nationnal": "",
-            "nom": "",
-            "prenom": "",
-            "classement": "",
-        }
-        tournament_players.append(new_tournament_players_file)
         file_path = TournamentController.create_file_player_path(
             tournament.tournament_id
         )
@@ -113,7 +106,7 @@ class TournamentController:
         tournament_data_date = sorted(
             tournament_data,
             reverse=True,
-            key=lambda tournament: tournament["nom_du_tournoi"],
+            key=lambda tournament: tournament["date_de_debut"],
         )
         # appel de la fonction qui créé la vue des tournois pour choisir
         TournamentView.list_tournaments_for_choice_view(
@@ -176,6 +169,7 @@ class TournamentController:
                 self, players=new_user, file_path=f_path
                 )
 
+    """Mise à jour du classement des joueurs"""
     def tournament_rank_players_update(self, tournament, match_end):
         prefixed_tournament = tournament.get("id du tournoi")
         filepath = "data/tournaments/" + prefixed_tournament + "_players.json"
@@ -215,11 +209,12 @@ class TournamentController:
         with open(filepath, "w") as file:
             json.dump(tournament_players, file, indent=2)
 
+    """ rapport: liste des joueurs par classement"""
     def report_player_by_rank(self, tournament):
         fsuffix = "_players.json"
         fpath = "data/tournaments/" + tournament.get("id du tournoi") + fsuffix
         PlayerController.list_players_by_rank(self, fpath)
-
+    """ rapport: liste des joueurs par noms"""
     def report_player_by_name(self, tournament):
         fsuffix = "_players.json"
         fpath = "data/tournaments/" + tournament.get("id du tournoi") + fsuffix
