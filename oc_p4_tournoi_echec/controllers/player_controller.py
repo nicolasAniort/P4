@@ -12,6 +12,7 @@ class PlayerController:
     def write_player(self, path):
         """ajouter un joueur dans le fichier json"""
         players = []
+        #
         PlayerView.show_create_player(self)
         """ouvrir le fichier json"""
         try:
@@ -40,9 +41,7 @@ class PlayerController:
                         break
                 # Afficher un message si l'identifiant a été trouvé ou non
                 if found:
-                    print("L'identifiant a été trouvé dans les données.")
-                    menu = Menu()
-                    menu.display_players_menu()
+                    print("L'identifiant a été trouvé dans les données.")                   
                 else:
                     break
                 break
@@ -178,9 +177,9 @@ class PlayerController:
             print("Le fichier de données des joueurs est corrompu.")
             return None
 
-    # Chercher un joueur dans le fichier json à partir de
-    # son identifiant nationnal ses informations
-
+    """ Chercher un joueur dans le fichier json à partir de
+    son identifiant nationnal ses informations
+    """
     def search_player(self, search_criteria):
         players = []
         try:

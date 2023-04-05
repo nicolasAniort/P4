@@ -19,7 +19,7 @@
     "date_de_fin": "10/11/2023",
     "nombre_de_round": 4,
     "description_tournoi": "pas de remarques g\u00e9n\u00e9rales",
-    "numero_round_actif": 2,
+    "numero_round_actif": 1,
     "liste_des_rounds": [],
     "liste_des_joueurs": "data/tournaments/TR10102023_players.json"
   },
@@ -43,8 +43,20 @@
     "date_de_fin": "25/04/2023",
     "nombre_de_round": 4,
     "description_tournoi": "pas de remarques-r\u00e9glement classique",
-    "numero_round_actif": 1,
+    "numero_round_actif": 5,
     "liste_des_rounds": [],
     "liste_des_joueurs": "data/tournaments/TR21042023_players.json"
+  },
+  {
+    "id du tournoi": "TR05052023",
+    "nom_du_tournoi": "Tournoi des 100 jours",
+    "lieu": "albi",
+    "date_de_debut": "05/05/2023",
+    "date_de_fin": "10/05/2023",
+    "nombre_de_round": 4,
+    "description_tournoi": "pas de remarques -regles generales appliqu\u00e9es ",
+    "numero_round_actif": 1,
+    "liste_des_rounds": [],
+    "liste_des_joueurs": "data/tournaments/TR05052023_players.json"
   }
 ]

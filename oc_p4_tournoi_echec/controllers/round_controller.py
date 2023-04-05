@@ -206,7 +206,6 @@ class RoundController:
                 # dans le dictio du match
                 match["match"]["score1"] = score1
                 match["match"]["score2"] = score2
-                # round_data[number] = match
 
                 # Mettre à jour les classement dans le dictio du match
                 match["match"]["player1"]["classement"] = score1
@@ -217,7 +216,6 @@ class RoundController:
                 match["match"]["player2"]["adversaire"].append(
                     match["match"]["player1"]["identifiant_national"]
                 )
-
                 for player in players_data:
                     if (
                         player["identifiant_national"]
@@ -238,11 +236,10 @@ class RoundController:
                         player["adversaire"].append(
                             match["match"]["player1"]["identifiant_national"]
                         )
-
                 # Enregistrer les modification
                 # dans le fichier TRXXXXXXX_players.json
                 with open(update_player_tournament_path, "w") as file:
-                    json.dump(players_data, file, cls=MatchEncoder, indent=2)
+                    json.dump(players_data, file, indent=2)
 
                 round_data[number] = match
 
@@ -252,9 +249,7 @@ class RoundController:
 
                 RoundView.display_score_update_ok(self)
                 RoundController.check_round(self, tournament)
-                TournamentController.tournament_rank_players_update(
-                    self, tournament, match
-                )
+                
                 break
             elif match["id_round"] != id_selected and int(id_selected) <= len(
                 round_data
@@ -320,7 +315,7 @@ class RoundController:
         count = int(tournament.get("numero_round_actif"))
         iterate = 1
         while iterate <= count:
-            print(iterate)
+            # print(iterate)
             self.name = "Round" + str(iterate)
             file_path = (
                 "data/rounds/"
