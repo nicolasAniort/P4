@@ -26,18 +26,9 @@ class TournamentController:
         tournament_round_list = []
         tournament_players_list: str = ""
         tournament = Tournament(
-            tournament_id,
-            tournament_name,
-            tournament_location,
-            tournament_date_start,
-            tournament_date_end,
-            tournament_number_of_round,
-            tournament_description,
-            tournament_round_number,
-            tournament_round_list,
-            tournament_players_list,
-        )
-
+            tournament_id, tournament_name, tournament_location, tournament_date_start,
+            tournament_date_end, tournament_number_of_round, tournament_description,
+            tournament_round_number, tournament_round_list, tournament_players_list)
         """Creer un nouveau tournoi """
         tournaments = []
         try:
@@ -62,15 +53,10 @@ class TournamentController:
             ),
         }
         tournaments.append(new_tournament)
-
         with open("data/tournaments/tournament_data.json", "w") as file:
             json.dump(tournaments, file, indent=2)
-
         tournament_players = []
-        file_path = TournamentController.create_file_player_path(
-            tournament.tournament_id
-        )
-
+        file_path = TournamentController.create_file_player_path(tournament.tournament_id)
         with open(file_path, "x") as file:
             json.dump(tournament_players, file, indent=2)
         TournamentView.display_tournament_created(self)

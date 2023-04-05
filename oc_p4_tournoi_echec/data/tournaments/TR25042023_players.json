@@ -14,5 +14,21 @@
     "date_de_naissance": "10/12/2000",
     "classement": "0",
     "adversaire": []
+  },
+  {
+    "identifiant_national": "tu15263",
+    "nom": "testu",
+    "prenom": "Nicolas ",
+    "date_de_naissance": "10/01/1999",
+    "classement": "0",
+    "adversaire": []
+  },
+  {
+    "identifiant_national": "hu15478",
+    "nom": "hut",
+    "prenom": "clement",
+    "date_de_naissance": "11/02/1998",
+    "classement": "0",
+    "adversaire": []
   }
 ]

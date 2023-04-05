@@ -220,7 +220,7 @@ class PlayerController:
                         break
                 # Afficher un message si l'identifiant a été trouvé ou non
                 if found:
-                    print("L'identifiant a été trouvé dans les données.")                  
+                    print("L'identifiant a été trouvé dans les données.")
                 else:
                     break
                 break

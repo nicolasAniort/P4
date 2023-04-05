@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "identifiant_nationnal": "bg15263",
+    "nom": "grund",
+    "prenom": "kurt",
+    "date_de_naissance": "31/12/1999",
+    "classement": "1",
+    "adversaire": [
+      "fr15263"
+    ]
+  },
+  {
+    "identifiant_nationnal": "xs15263",
+    "nom": "hunt",
+    "prenom": "gunter",
+    "date_de_naissance": "15/02/2003",
+    "classement": "1",
+    "adversaire": [
+      "nj15263"
+    ]
+  }
+]

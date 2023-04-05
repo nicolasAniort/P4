@@ -14,8 +14,10 @@
     "nom": "Bras",
     "prenom": "Norbert",
     "date_de_naissance": "01/01/1969",
-    "classement": "0",
-    "adversaire": []
+    "classement": "1",
+    "adversaire": [
+      "nj15263"
+    ]
   },
   {
     "identifiant_national": "nj15263",
@@ -24,7 +26,8 @@
     "date_de_naissance": "10/02/1997",
     "classement": "0",
     "adversaire": [
-      "xs15263"
+      "xs15263",
+      "bg14569"
     ]
   },
   {
@@ -66,5 +69,13 @@
     "adversaire": [
       "bg15263"
     ]
+  },
+  {
+    "identifiant_national": "gj12456",
+    "nom": "pol",
+    "prenom": "jean",
+    "date_de_naissance": "01/01/1990",
+    "classement": "0",
+    "adversaire": []
   }
 ]
