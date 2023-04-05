@@ -2,7 +2,6 @@ import re
 import json
 from models.player import Player
 from views.player_view import PlayerView
-from views.menuview import Menu
 
 
 class PlayerController:
@@ -25,69 +24,8 @@ class PlayerController:
                 players = []
         except json.JSONDecodeError:
             players = []
-        while True:
-            try:
-                # Ouvrir le fichier JSON et le lire dans une variable
-                with open(path, "r") as file:
-                    data = json.load(file)
-                national_id = PlayerView.input_national_id(self)
-                if not re.match(r"[A-Za-z]{2}\d{5}", national_id):
-                    raise ValueError(PlayerView.error_national_id(self))
-                # Rechercher l'identifiant national dans les données
-                found = False
-                for player in data:
-                    if player["identifiant_national"] == national_id:
-                        found = True
-                        break
-                # Afficher un message si l'identifiant a été trouvé ou non
-                if found:
-                    print("L'identifiant a été trouvé dans les données.")                   
-                else:
-                    break
-                break
-            except ValueError as e:
-                print(e)
-            try:
-                pass
-            except ValueError as e:
-                print(e)
-        while True:
-            try:
-                last_name = str(PlayerView.input_last_name(self))
-                break
-            except ValueError:
-                PlayerView.error_last_name(self)
-        while True:
-            try:
-                first_name = str(PlayerView.input_first_name(self))
-                break
-            except ValueError:
-                PlayerView.error_first_name(self)
-        while True:
-            try:
-                birth_date = PlayerView.input_birthday(self)
-                if not re.match(r"\d{2}/\d{2}/\d{4}", birth_date):
-                    raise ValueError(PlayerView.error_birthday(self))
-                break
-            except ValueError as e:
-                print(e)
-        while True:
-            try:
-                rank = "0"
-                break
-            except ValueError:
-                print("Veuillez entrer un nom valide")
-        while True:
-            try:
-                adversary = []
-                break
-            except ValueError:
-                print("Veuillez entrer un nom valide")
-
-        player: Player = Player(
-            last_name, first_name, birth_date, national_id, rank, adversary
-        )
-
+        national_id = PlayerController.test_id_in_database(self, path)
+        player = PlayerController.write_detail_player(self, national_id)
         new_player = {
             "identifiant_national": player.national_id,
             "nom": player.last_name,
@@ -225,3 +163,71 @@ class PlayerController:
         with open(file_path, "w") as file:
             json.dump(players, file, indent=2)
         PlayerView.show_create_player_ok(self)
+
+    def write_detail_player(self, id):
+        while True:
+            try:
+                last_name = str(PlayerView.input_last_name(self))
+                break
+            except ValueError:
+                PlayerView.error_last_name(self)
+        while True:
+            try:
+                first_name = str(PlayerView.input_first_name(self))
+                break
+            except ValueError:
+                PlayerView.error_first_name(self)
+        while True:
+            try:
+                birth_date = PlayerView.input_birthday(self)
+                if not re.match(r"\d{2}/\d{2}/\d{4}", birth_date):
+                    raise ValueError(PlayerView.error_birthday(self))
+                break
+            except ValueError as e:
+                print(e)
+        while True:
+            try:
+                rank = "0"
+                break
+            except ValueError:
+                print("Veuillez entrer un nom valide")
+        while True:
+            try:
+                adversary = []
+                break
+            except ValueError:
+                print("Veuillez entrer un nom valide")
+        national_id = id
+        player: Player = Player(
+            last_name, first_name, birth_date, national_id, rank, adversary
+        )
+        return player
+
+    def test_id_in_database(self, fpath):
+        while True:
+            try:
+                # Ouvrir le fichier JSON et le lire dans une variable
+                with open(fpath, "r") as file:
+                    data = json.load(file)
+                national_id = PlayerView.input_national_id(self)
+                if not re.match(r"[A-Za-z]{2}\d{5}", national_id):
+                    raise ValueError(PlayerView.error_national_id(self))
+                # Rechercher l'identifiant national dans les données
+                found = False
+                for player in data:
+                    if player["identifiant_national"] == national_id:
+                        found = True
+                        break
+                # Afficher un message si l'identifiant a été trouvé ou non
+                if found:
+                    print("L'identifiant a été trouvé dans les données.")                  
+                else:
+                    break
+                break
+            except ValueError as e:
+                print(e)
+            try:
+                pass
+            except ValueError as e:
+                print(e)
+        return national_id

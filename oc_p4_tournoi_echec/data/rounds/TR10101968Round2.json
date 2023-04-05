@@ -1,0 +1,56 @@
+[
+  {
+    "id_round": "1",
+    "match": {
+      "player1": {
+        "nom": "durand",
+        "prenom": "jean",
+        "date_de_naissance": "10/10/1977",
+        "identifiant_national": "se12345",
+        "classement": "0",
+        "adversaire": [
+          "hu98865"
+        ]
+      },
+      "player2": {
+        "nom": "dumur",
+        "prenom": "leon",
+        "date_de_naissance": "01/01/1956",
+        "identifiant_national": "hu98765",
+        "classement": "0",
+        "adversaire": [
+          "qz15926"
+        ]
+      },
+      "score1": null,
+      "score2": null
+    }
+  },
+  {
+    "id_round": "2",
+    "match": {
+      "player1": {
+        "nom": "ingberg",
+        "prenom": "thor",
+        "date_de_naissance": "10/01/1985",
+        "identifiant_national": "qz15926",
+        "classement": "1",
+        "adversaire": [
+          "hu98765"
+        ]
+      },
+      "player2": {
+        "nom": "dumur",
+        "prenom": "jean",
+        "date_de_naissance": "01/01/1956",
+        "identifiant_national": "hu98865",
+        "classement": "1",
+        "adversaire": [
+          "se12345"
+        ]
+      },
+      "score1": null,
+      "score2": null
+    }
+  }
+]

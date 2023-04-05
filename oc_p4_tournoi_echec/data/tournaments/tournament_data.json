@@ -7,13 +7,13 @@
     "date_de_fin": "12/02/1968",
     "nombre_de_round": 4,
     "description_tournoi": "pas de remarques g\u00e9n\u00e9rales",
-    "numero_round_actif": 1,
+    "numero_round_actif": 2,
     "liste_des_rounds": [],
     "liste_des_joueurs": "data/tournaments/TR10101968_players.json"
   },
   {
     "id du tournoi": "TR10102023",
-    "nom_du_tournoi": "Tournoi dess champions",
+    "nom_du_tournoi": "Tournoi des championsII",
     "lieu": "albi",
     "date_de_debut": "10/10/2023",
     "date_de_fin": "10/11/2023",
@@ -43,7 +43,7 @@
     "date_de_fin": "25/04/2023",
     "nombre_de_round": 4,
     "description_tournoi": "pas de remarques-r\u00e9glement classique",
-    "numero_round_actif": 5,
+    "numero_round_actif": 2,
     "liste_des_rounds": [],
     "liste_des_joueurs": "data/tournaments/TR21042023_players.json"
   },
@@ -58,5 +58,29 @@
     "numero_round_actif": 1,
     "liste_des_rounds": [],
     "liste_des_joueurs": "data/tournaments/TR05052023_players.json"
+  },
+  {
+    "id du tournoi": "TR21042023",
+    "nom_du_tournoi": "tournoi des epreuves",
+    "lieu": "Paris",
+    "date_de_debut": "21/04/2023",
+    "date_de_fin": "25/04/2023",
+    "nombre_de_round": 4,
+    "description_tournoi": "pas de remarque",
+    "numero_round_actif": 2,
+    "liste_des_rounds": [],
+    "liste_des_joueurs": "data/tournaments/TR21042023_players.json"
+  },
+  {
+    "id du tournoi": "TR21062023",
+    "nom_du_tournoi": "tournoi des epreuves 2",
+    "lieu": "Paris",
+    "date_de_debut": "21/06/2023",
+    "date_de_fin": "24/06/2023",
+    "nombre_de_round": 4,
+    "description_tournoi": "pas de remarques",
+    "numero_round_actif": 1,
+    "liste_des_rounds": [],
+    "liste_des_joueurs": "data/tournaments/TR21062023_players.json"
   }
 ]

@@ -4,8 +4,10 @@
     "nom": "brun",
     "prenom": "joseph",
     "date_de_naissance": "01/12/1998",
-    "classement": "0",
-    "adversaire": []
+    "classement": "0.5",
+    "adversaire": [
+      "nh15263"
+    ]
   },
   {
     "identifiant_national": "bg14569",
@@ -21,38 +23,48 @@
     "prenom": "vincent",
     "date_de_naissance": "10/02/1997",
     "classement": "0",
-    "adversaire": []
+    "adversaire": [
+      "xs15263"
+    ]
   },
   {
     "identifiant_national": "nh15263",
     "nom": "vivant",
     "prenom": "Ella",
     "date_de_naissance": "10/02/2002",
-    "classement": "0",
-    "adversaire": []
+    "classement": "0.5",
+    "adversaire": [
+      "ki12563"
+    ]
   },
   {
     "identifiant_national": "bg15263",
     "nom": "grund",
     "prenom": "kurt",
     "date_de_naissance": "31/12/1999",
-    "classement": "0",
-    "adversaire": []
+    "classement": "1",
+    "adversaire": [
+      "fr15263"
+    ]
   },
   {
     "identifiant_national": "xs15263",
     "nom": "hunt",
     "prenom": "gunter",
     "date_de_naissance": "15/02/2003",
-    "classement": "0",
-    "adversaire": []
+    "classement": "1",
+    "adversaire": [
+      "nj15263"
+    ]
   },
   {
-    "identifiant_national": "er15263",
-    "nom": "Paris",
-    "prenom": "Ella",
-    "date_de_naissance": "15/03/2004",
+    "identifiant_national": "fr15263",
+    "nom": "brun",
+    "prenom": "Eloi",
+    "date_de_naissance": "01/01/1966",
     "classement": "0",
-    "adversaire": []
+    "adversaire": [
+      "bg15263"
+    ]
   }
 ]

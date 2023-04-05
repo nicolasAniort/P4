@@ -5,7 +5,9 @@
     "date_de_naissance": "10/10/1977",
     "identifiant_national": "se12345",
     "classement": "0",
-    "adversaire": []
+    "adversaire": [
+      "hu98865"
+    ]
   },
   {
     "nom": "dumur",
@@ -13,22 +15,28 @@
     "date_de_naissance": "01/01/1956",
     "identifiant_national": "hu98765",
     "classement": "0",
-    "adversaire": []
+    "adversaire": [
+      "qz15926"
+    ]
   },
   {
     "nom": "ingberg",
     "prenom": "thor",
     "date_de_naissance": "10/01/1985",
     "identifiant_national": "qz15926",
-    "classement": "0",
-    "adversaire": []
+    "classement": "1",
+    "adversaire": [
+      "hu98765"
+    ]
   },
   {
     "nom": "dumur",
     "prenom": "jean",
     "date_de_naissance": "01/01/1956",
     "identifiant_national": "hu98865",
-    "classement": "0",
-    "adversaire": []
+    "classement": "1",
+    "adversaire": [
+      "se12345"
+    ]
   }
 ]

@@ -1,2 +1,18 @@
 [
+  {
+    "identifiant_national": "ji15263",
+    "nom": "gru",
+    "prenom": "tor",
+    "date_de_naissance": "10/11/2003",
+    "classement": "0",
+    "adversaire": []
+  },
+  {
+    "identifiant_national": "hy15263",
+    "nom": "tyu",
+    "prenom": "jean",
+    "date_de_naissance": "10/12/2000",
+    "classement": "0",
+    "adversaire": []
+  }
 ]
